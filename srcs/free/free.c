@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/04 16:45:54 by msharifi         ###   ########.fr       */
+/*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
+/*   Updated: 2023/04/04 17:03:35 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	ft_free(void *addr)
 {
-	t_data	data;
+	if (addr)
+		free(addr);
+	addr = NULL;
+}
 
-	(void)av;
-	if (ac != 2)
-		return (1);
-	data = (t_data){0};
-	if (ac != 2)
-		return (write(2, "Run as : ./so_long map\n", 24), EXIT_FAILURE);
-	if (!check_map(&data, av[1]))
-		return (2);
-	return (0);
+void	free_lstmap(t_lst *lst_map)
+{
+	t_lst	*before;
+
+	if (!lst_map)
+		return ;
+	before = lst_map;
+	while (lst_map)
+	{
+		lst_map = lst_map->next;
+		ft_free(before->mapline);
+		ft_free(before);
+		before = lst_map;
+	}
 }

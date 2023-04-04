@@ -5,17 +5,26 @@ RED			=	\033[1;31m
 DEFAULT		=	\033[0m
 
 OBJ_DIR		=	objs
-INC_DIR		=	include
+INC_DIR		=	includes
 SRC_DIR		=	$(shell find srcs -type d)
 LIB_DIR		=	-Llibrairie/minilibx-linux -lm -lmlx -lXext -lX11
 
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
-SRCS		=	main.c	\
+SRCS		=	main.c					\
+				print.c					\
+				free.c					\
+				get_next_line.c			\
+				get_next_line_utils.c	\
+				check_map.c				\
+				init_map.c				\
+				alloc.c					\
+				lst_utils.c				\
+				str_utils.c
 
 OBJS		=	$(SRCS:%.c=${OBJ_DIR}/%.o)
 
-RM			= /usr/bin/rm
+RM			= rm -rf
 
 CC			=	clang
 CFLAGS		=	-Werror -Wall -Wextra -g3
@@ -37,10 +46,11 @@ $(OBJ_DIR) :
 norm : @$(NORM)
 
 clean:
-		${RM} -r $(OBJ_DIR)
+		${RM} $(OBJ_DIR)
 
 fclean:		clean
 		${RM} ${NAME}
+		@echo "\n${GREEN}Everything cleaned${DEFAULT}"
 
 re:			fclean
 		$(MAKE) all -j

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/04 16:45:54 by msharifi         ###   ########.fr       */
+/*   Created: 2023/04/04 16:44:02 by msharifi          #+#    #+#             */
+/*   Updated: 2023/04/04 17:06:10 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	print_lstmap(t_lst *lst)
 {
-	t_data	data;
+	t_lst	*tmp;
 
-	(void)av;
-	if (ac != 2)
-		return (1);
-	data = (t_data){0};
-	if (ac != 2)
-		return (write(2, "Run as : ./so_long map\n", 24), EXIT_FAILURE);
-	if (!check_map(&data, av[1]))
-		return (2);
-	return (0);
+	tmp = lst;
+	if (!lst)
+		return ;
+	while (tmp)
+	{
+		printf("%s", tmp->mapline);
+		tmp = tmp->next;
+	}
 }

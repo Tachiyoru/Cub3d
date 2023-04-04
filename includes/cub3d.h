@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/03/25 17:52:00 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/04 17:10:17 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@
 # define K_D			100
 
 /****************************/
+/*			 GNL			*/
+/****************************/
+
+# define BUFFER_SIZE 10
+
+char		*get_next_line(int fd, int reset);
+char		*ft_read_line(int fd, char *line);
+char		*ft_strchr(char *s, int c);
+char		*ft_strjoin(char *line, char *buff);
+char		*ft_line_to_buff(char *line);
+char		*ft_read_new_line(char *line);
+
+/****************************/
 /*			STRUCTS			*/
 /****************************/
 
@@ -42,38 +55,20 @@ typedef struct s_map
 {
 	int		size_x;
 	int		size_y;
-	int		collectible;
-	int		ennemy;
-	int		player;
-	int		exit;
-	int		lines;
 	char	**map;
-
 }t_map;
 
 typedef struct s_image
 {
 	void	*mlx_img;
 	void	*wall;
-	void	*exit;
-	void	*exit_o;
 	void	*ground;
-	void	*player;
-	void	*monstre;
-	void	*monstre2;
-	void	*item;
 }t_image;
 
 typedef struct s_player
 {
-	int		pos_x;
-	int		pos_y;
-	int		exit_x;
-	int		exit_y;
-	int		collected;
-	int		open_exit;
-	int		move_count;
-	int		anim_frame;
+	int		start_x;
+	int		start_y;
 }t_player;
 
 typedef struct s_data
@@ -93,12 +88,40 @@ typedef struct s_lst
 	struct s_lst	*next;
 }t_lst;
 
-/****************************/
-/*			FCTS			*/
-/****************************/
+void	print_lstmap(t_lst *lst);
 
-//check_map
+/****************************************************/
+/*						FCTS						*/
+/****************************************************/
+
+////****************** FREE *******************////
+
+// free.c
+void	ft_free(void *addr);
+void	free_lstmap(t_lst *lst_map);
+
+////***************** PARSING *****************////
+
+//check_map.c
 int		check_map(t_data *data, char *file);
 int		check_cub(char *file);
+
+// init_map.c
+int		init_map(t_data *data, int fd);
+t_lst	*store_map(int fd);
+
+////****************** UTILS ******************////
+
+// alloc.c
+void	*ft_calloc(size_t n, size_t size);
+
+// lst_utils.c
+t_lst	*ft_lstnew(char *str);
+t_lst	*ft_lstlast(t_lst *lst);
+int		ft_lstsize(t_lst *lst);
+
+
+// str_utils.c
+int		ft_strlen(char *str);
 
 #endif
