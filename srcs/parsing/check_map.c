@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/04 18:32:49 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/04 20:05:19 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ int	check_map(t_data *data, char *file)
 	close(fd);
 	return (0);
 }
+
 /**
- * @brief 
- * 
- * @param file 
- * @return int 
+ * @brief
+ *
+ * @param file
+ * @return int
  */
 int	check_cub(char *file)
 {
