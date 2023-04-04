@@ -6,19 +6,24 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/03/25 17:54:20 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/04 17:14:21 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/**
+ * @brief
+ *
+ * @param data
+ * @param file
+ * @return int
+ */
 int	check_map(t_data *data, char *file)
 {
 	int		fd;
 	t_lst	**map_lst;
 
-	if (!check_cub(file))
-		return (map_checker_error(1));
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (write(1, "Failed to open\n", 16), 0);
