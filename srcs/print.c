@@ -6,11 +6,21 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:44:02 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/04 17:06:10 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/04 19:17:14 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	print_path(t_data *data)
+{
+	printf("%s\n", data->image.path_n);
+	printf("%s\n", data->image.path_s);
+	printf("%s\n", data->image.path_w);
+	printf("%s\n", data->image.path_e);
+	printf("%s\n", data->image.path_f);
+	printf("%s\n", data->image.path_c);
+}
 
 void	print_lstmap(t_lst *lst)
 {

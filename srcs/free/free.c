@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/04 17:03:35 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/04 19:27:39 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,19 @@ void	free_lstmap(t_lst *lst_map)
 		ft_free(before);
 		before = lst_map;
 	}
+}
+
+void	free_img(t_image img)
+{
+	ft_free(img.path_n);
+	ft_free(img.path_s);
+	ft_free(img.path_w);
+	ft_free(img.path_e);
+	ft_free(img.path_f);
+	ft_free(img.path_c);
+}
+
+void	free_all(t_data *data)
+{
+	free_img(data->image);
 }

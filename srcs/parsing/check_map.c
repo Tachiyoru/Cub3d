@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/04 16:58:06 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:32:49 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	check_map(t_data *data, char *file)
 {
 	int		fd;
 
-	if (!check_cub(file))
-		return ((1)); // map_checker_error
+	if (check_cub(file))
+		return (1);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (perror(NULL), 2);
-	if (!init_map(data, fd))
-		return (close(fd), 3); // free_map(data)
+		return (err_msg(file, OPEN, 2));
+	if (init_map(data, fd))
+		return (close(fd), 3);
 	close(fd);
 	return (0);
 }
@@ -39,6 +39,6 @@ int	check_cub(char *file)
 	size = ft_strlen(file);
 	if (file[size - 4] != '.' || file[size - 3] != 'c'
 		|| file[size - 2] != 'u' || file[size - 1] != 'b')
-		return (0);
-	return (1);
+		return (err_msg(file, NOT_CUM, 1));
+	return (0);
 }

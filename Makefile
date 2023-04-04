@@ -13,9 +13,11 @@ vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
 SRCS		=	main.c					\
 				print.c					\
+				error_msg.c				\
 				free.c					\
 				get_next_line.c			\
 				get_next_line_utils.c	\
+				init_to_null.c					\
 				check_map.c				\
 				init_map.c				\
 				alloc.c					\

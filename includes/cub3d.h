@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/04 17:10:17 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/04 19:32:20 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ typedef struct s_map
 
 typedef struct s_image
 {
-	void	*mlx_img;
-	void	*wall;
-	void	*ground;
+	char	*path_n;
+	char	*path_s;
+	char	*path_w;
+	char	*path_e;
+	char	*path_f;
+	char	*path_c;
 }t_image;
 
 typedef struct s_player
@@ -89,16 +92,30 @@ typedef struct s_lst
 }t_lst;
 
 void	print_lstmap(t_lst *lst);
+void	print_path(t_data *data);
 
 /****************************************************/
 /*						FCTS						*/
 /****************************************************/
+
+////****************** ERROR *******************////
+
+// error.c
+int		err_msg(char *s1, char *s2, int ret_val);
 
 ////****************** FREE *******************////
 
 // free.c
 void	ft_free(void *addr);
 void	free_lstmap(t_lst *lst_map);
+void	free_img(t_image img);
+void	free_all(t_data *data);
+
+////****************** INIT *******************////
+
+// init_to_null.c
+void	init_to_null_data(t_data *data);
+void	init_to_null_img(t_data *data);
 
 ////***************** PARSING *****************////
 
@@ -109,6 +126,9 @@ int		check_cub(char *file);
 // init_map.c
 int		init_map(t_data *data, int fd);
 t_lst	*store_map(int fd);
+int		store_path(t_data *data, t_lst *maplst);
+int		store_path_2(t_data *data, t_lst *maplst);
+int		check_path(t_data *data);
 
 ////****************** UTILS ******************////
 
@@ -123,5 +143,7 @@ int		ft_lstsize(t_lst *lst);
 
 // str_utils.c
 int		ft_strlen(char *str);
+char	*ft_strndup(char *str, int n);
+int		ft_strncmp(char *str, char *to_find, int n);
 
 #endif
