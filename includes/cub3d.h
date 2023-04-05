@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 18:46:28 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 18:52:04 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 
 # include "error.h"
-// # include "mlx/mlx.h"
-// # include "mlx/mlx_int.h"
+# include "../mlx/mlx.h"
+# include "../mlx/mlx_int.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -106,6 +106,9 @@ int		err_msg(char *s1, char *s2, int ret_val);
 
 ////****************** FREE *******************////
 
+// free_mlx.c
+int		destroy_all(t_data *data);
+
 // free.c
 void	ft_free(void *addr);
 void	free_lstmap(t_lst *lst_map);
@@ -114,6 +117,16 @@ void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
 
 ////****************** INIT *******************////
+
+// init_mlx.c
+int		init_mlx(t_data *data);
+
+// init_map.c
+int		init_map(t_data *data, int fd);
+t_lst	*store_map(int fd);
+int		store_path(t_data *data, t_lst *maplst, int a);
+int		store_path_2(t_data *data, t_lst *maplst, int a);
+int		check_path(t_data *data);
 
 // init_to_null.c
 void	init_to_null_data(t_data *data);
@@ -131,14 +144,6 @@ char	**create_copy_map(char **map);
 
 // data_map.c
 int		store_map_data(t_data *data, t_lst *tmp_map);
-int		verif_data(char **map);
-
-// init_map.c
-int		init_map(t_data *data, int fd);
-t_lst	*store_map(int fd);
-int		store_path(t_data *data, t_lst *maplst, int a);
-int		store_path_2(t_data *data, t_lst *maplst, int a);
-int		check_path(t_data *data);
 
 // parsing_map.c
 int		is_player(char **map);
