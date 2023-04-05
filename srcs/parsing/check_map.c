@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:47:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:17:17 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,12 @@ int	check_map(t_data *data, char *file)
 		return (close(fd), 3);
 	close(fd);
 	print_tab(data->map.map);
-	if (check_open(data->image))
+	if (is_player(data->map.map)) //check_open(data->image)
 		return (free_img(data->image), free_tab(data->map.map, 0), 1);
 	if (check_space(data))
 		return (err_msg(MAP_INV, NULL, 4));
 	return (0);
 }
-	// check_player(data->map); //un seul N S W E
-	// check_wall(data->map); //Verifier que toute la map est entoure de 1
-	// check_inside(data->map); // verifier qu'il n'y a pas d'espace a l'interieur de la map
 
 /**
  * @brief

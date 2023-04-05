@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:38:41 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 18:41:14 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,24 @@ int	store_map_data(t_data *data, t_lst *tmp_map)
 		if (!data->map.map[i])
 			return (1);
 		tmp_map = tmp_map->next;
+	}
+	return (0);
+}
+
+int	verif_data(char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
+				return (1);
+		}
 	}
 	return (0);
 }
