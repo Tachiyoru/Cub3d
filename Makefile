@@ -21,6 +21,7 @@ SRCS		=	main.c					\
 				check_map.c				\
 				data_map.c				\
 				init_map.c				\
+				parsing_map.c			\
 				alloc.c					\
 				lst_utils.c				\
 				str_utils.c
