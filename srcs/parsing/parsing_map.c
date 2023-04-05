@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 18:45:54 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 19:07:23 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_player(char **map)
+int	is_player(t_data *data, char **map)
 {
 	int	i;
 	int	j;
@@ -30,6 +30,8 @@ int	is_player(char **map)
 			{
 				p += 1;
 				map[i][j] = '0';
+				data->player.start_y = i;
+				data->player.start_x = j;
 			}
 		}
 	}

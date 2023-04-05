@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:44:02 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 18:20:39 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 19:08:38 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ void	print_tab(char **tab)
 	int	i;
 
 	i = -1;
-	printf("tab = \n");
 	while (tab[++i])
-	{
-		if (tab[i][0] == '\n')
-			printf("ooooooooooooo");
-	}
-	printf("%s\n", tab[i]);
+		printf("%s\n", tab[i]);
 }

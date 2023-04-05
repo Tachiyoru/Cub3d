@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 18:52:04 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:58:48 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,10 @@ char	**create_copy_map(char **map);
 
 // data_map.c
 int		store_map_data(t_data *data, t_lst *tmp_map);
+int		verif_data(char **map);
 
 // parsing_map.c
-int		is_player(char **map);
+int		is_player(t_data *data, char **map);
 int		check_space(t_data *data);
 int		recursive(char **map, int y, int x);
 int		verif_char(t_lst *check);

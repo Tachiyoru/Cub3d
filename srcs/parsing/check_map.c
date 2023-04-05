@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 18:46:09 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 19:07:44 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	check_map(t_data *data, char *file)
 	if (init_map(data, fd))
 		return (close(fd), 3);
 	close(fd);
-	print_tab(data->map.map);
-	if (is_player(data->map.map)) //check_open(data->image)
-		return (free_img(data->image), free_tab(data->map.map, 0), 1);
+	//check_open(data->image)
 	if (check_space(data))
 		return (free_tab(data->map.map, 0), free_path(data->image),
 			err_msg(MAP_INV, NULL, 4));

@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 18:48:53 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:08:26 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 		return (2);
 	if (init_mlx(&data))
 		return (free_all(&data), 3);
+	print_tab(data.map.map);
 	free_all(&data);
 	return (0);
 }
