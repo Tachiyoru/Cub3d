@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 19:52:47 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 20:00:48 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	init_mlx(t_data *data)
 
 void	loop_hook(t_data data)
 {
-	mlx_loop_hook(data.mlx_ptr, &init_mlx, &data);
+	// mlx_loop_hook(data.mlx_ptr, &init_mlx, &data); // bonne vanne sa mere
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, ClientMessage, LeaveWindowMask,
 		&handle_btnrealease, &data);
