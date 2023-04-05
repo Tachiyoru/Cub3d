@@ -23,6 +23,7 @@ SRCS		=	main.c					\
 				init_mlx.c				\
 				init_map.c				\
 				init_to_null.c			\
+				keypress.c				\
 				check_map.c				\
 				data_map.c				\
 				parsing_map.c			\

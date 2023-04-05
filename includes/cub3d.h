@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 18:58:48 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:38:06 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	int			win_width;
-	int			win_lentgh;
 	t_image		image;
 	t_map		map;
 	t_player	player;
@@ -120,6 +118,7 @@ void	free_tab(char **tab, int n);
 
 // init_mlx.c
 int		init_mlx(t_data *data);
+void	loop_hook(t_data data);
 
 // init_map.c
 int		init_map(t_data *data, int fd);
@@ -131,6 +130,12 @@ int		check_path(t_data *data);
 // init_to_null.c
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
+
+////***************** KEYPRESS ****************////
+
+// keypress.c
+int		handle_keypress(int keysym, t_data *data);
+int		handle_btnrealease(t_data *data);
 
 ////***************** PARSING *****************////
 
@@ -168,5 +173,6 @@ int		ft_lstsize(t_lst *lst);
 int		ft_strlen(char *str);
 char	*ft_strndup(char *str, int n);
 int		ft_strncmp(char *str, char *to_find, int n);
+int		ft_strchr2(char *str, char c);
 
 #endif

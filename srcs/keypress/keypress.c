@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keypress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 19:49:19 by msharifi         ###   ########.fr       */
+/*   Created: 2023/04/05 19:15:51 by msharifi          #+#    #+#             */
+/*   Updated: 2023/04/05 19:32:48 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	handle_keypress(int keysym, t_data *data)
 {
-	t_data	data;
+	if (keysym == XK_Escape)
+	{
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		data->win_ptr = NULL;
+	}
+	// else if (ft_strchr2("wasd", keysym))
+	// 	move_player(data, keysym);
+	return (keysym);
+}
 
-	data = (t_data){0};
-	if (ac != 2)
-		return (err_msg(ARG_START, NULL, 1));
-	if (check_map(&data, av[1]))
-		return (2);
-	if (init_mlx(&data))
-		return (free_all(&data), 3);
-	// print_tab(data.map.map);
-	loop_hook(data);
-	mlx_destroy_display(data.mlx_ptr);
-	ft_free(data.mlx_ptr);
-	free_all(&data);
+int	handle_btnrealease(t_data *data)
+{
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	data->win_ptr = NULL;
 	return (0);
 }

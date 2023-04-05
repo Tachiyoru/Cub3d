@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:53:25 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 16:29:31 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 19:20:14 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,22 @@ int	ft_strncmp(char *str, char *to_find, int n)
 	while (str[i] && to_find[i] && str[i] == to_find[i] && i < n)
 		i++;
 	if (i == n)
+		return (1);
+	return (0);
+}
+
+// Cherche c dans str
+// Return 1 si c est dans str, sinon 0
+int	ft_strchr2(char *str, char c)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i] && str[i] != c)
+		i++;
+	if (str[i] == c)
 		return (1);
 	return (0);
 }
