@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:38:10 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 16:47:01 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_map(t_data *data, char *file)
 	close(fd);
 	print_tab(data->map.map);
 	if (check_open(data->image))
-		return (free_img(data->image), 1);
+		return (free_img(data->image), free_tab(data->map.map, 0), 1);
 	if (check_space(data))
 		return (err_msg(MAP_INV, NULL, 4));
 	return (0);
