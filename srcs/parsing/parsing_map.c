@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 17:16:22 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:18:40 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,14 @@ int	check_wall(char **map)
 
 int	check_around(char **map, int y, int x)
 {
-	if (x + 1 < ft_strlen(map[y]) && map[y][x + 1] != '1' && map[y][x + 1] != '0')
+	if (x + 1 < ft_strlen(map[y]) && map[y][x + 1] != '1'
+		&& map[y][x + 1] != '0')
 		return (1);
 	else if (x - 1 > 0 && map[y][x - 1] != '1' && map[y][x - 1] != '0')
 		return (1);
 	else if (map[y + 1] && map[y + 1][x] != '1' && map[y + 1][x] != '0')
 		return (1);
-	else if (y - 1 > 0  && map[y - 1][x] != '1' && map[y - 1][x] != '0')
+	else if (y - 1 > 0 && map[y - 1][x] != '1' && map[y - 1][x] != '0')
 		return (1);
 	return (0);
 }
