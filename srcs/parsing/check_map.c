@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:47:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:15:33 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,14 @@ int	check_map(t_data *data, char *file)
 		return (close(fd), 3);
 	close(fd);
 	print_tab(data->map.map);
-	if (check_open(data->image))
-		return (free_img(data->image), free_tab(data->map.map, 0), 1);
+	// if (check_open(data->image))
+	// 	return (free_path(data->image), free_tab(data->map.map, 0), 1);
 	if (check_space(data))
-		return (err_msg(MAP_INV, NULL, 4));
+		return (free_tab(data->map.map, 0), free_path(data->image),
+			err_msg(MAP_INV, NULL, 4));
+	if (check_wall(data->map.map))
+		return (free_tab(data->map.map, 0), free_path(data->image),
+			err_msg(WALLS, NULL, 5));
 	return (0);
 }
 	// check_player(data->map); //un seul N S W E
@@ -73,8 +77,6 @@ int	check_open(t_image img)
 	close_txtures(fd);
 	return (0);
 }
-	// if (check_textures_size(img))
-	// 	return (1);
 
 void	close_txtures(int *fd)
 {

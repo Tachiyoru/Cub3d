@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:39:34 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:51 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int		err_msg(char *s1, char *s2, int ret_val);
 // free.c
 void	ft_free(void *addr);
 void	free_lstmap(t_lst *lst_map);
-void	free_img(t_image img);
+void	free_path(t_image img);
 void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
 
@@ -143,6 +143,8 @@ int		check_path(t_data *data);
 int		check_space(t_data *data);
 int		recursive(char **map, int y, int x);
 int		verif_char(t_lst *check);
+int		check_wall(char **map);
+int		check_around(char **map, int y, int x);
 
 ////****************** UTILS ******************////
 

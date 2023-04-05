@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 16:41:27 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 17:12:51 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_lstmap(t_lst *lst_map)
 	}
 }
 
-void	free_img(t_image img)
+void	free_path(t_image img)
 {
 	ft_free(img.path_n);
 	ft_free(img.path_s);
@@ -47,7 +47,7 @@ void	free_img(t_image img)
 
 void	free_all(t_data *data)
 {
-	free_img(data->image);
+	free_path(data->image);
 	free_tab(data->map.map, 0);
 }
 

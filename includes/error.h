@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:52:16 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 15:45:37 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 17:00:20 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # define MALLOC		"Malloc failed"
 # define MAP_INV	"Invalid map"
 # define OPEN_TXTUR	"Could not open all the textures"
+# define WALLS		"Map is not closed by walls"
 
 #endif
