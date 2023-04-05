@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/04 19:27:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:14:43 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,21 @@ void	free_img(t_image img)
 void	free_all(t_data *data)
 {
 	free_img(data->image);
+	free_tab(data->map.map, 0);
+}
+
+// Free un char **, si n == 0 en etierete, sinon jusqu'a n
+void	free_tab(char **tab, int n)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i] && (i < n || n == 0))
+	{
+		ft_free(tab[i]);
+		i++;
+	}
+	ft_free(tab);
 }

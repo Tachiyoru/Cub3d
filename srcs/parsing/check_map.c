@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:20:39 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 16:38:10 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	check_map(t_data *data, char *file)
 	print_tab(data->map.map);
 	if (check_open(data->image))
 		return (free_img(data->image), 1);
+	if (check_space(data))
+		return (err_msg(MAP_INV, NULL, 4));
 	return (0);
 }
 	// check_player(data->map); //un seul N S W E
@@ -84,4 +86,27 @@ void	close_txtures(int *fd)
 		close(fd[2]);
 	if (fd[3] != -1)
 		close(fd[3]);
+}
+
+char	**create_copy_map(char **map)
+{
+	char	**tab;
+	int		i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	tab = ft_calloc(i + 1, sizeof(char *));
+	if (!tab)
+		return (NULL);
+	tab[i] = NULL;
+	i = 0;
+	while (map[i])
+	{
+		tab[i] = ft_strndup(map[i], 0);
+		if (!tab[i])
+			return (NULL);
+		i++;
+	}
+	return (tab);
 }

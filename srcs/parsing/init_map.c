@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:06:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 16:17:42 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 16:38:59 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ int	init_map(t_data *data, int fd)
 	}
 	print_path(data);
 	if (check_path(data))
-		return (free_lstmap(maplst), free_img(data->image),
-			err_msg(MAP_INV, NULL, 2));
+		return (err_msg(MAP_INV, NULL, 2));
 	printf("******************************************\n\n");
-	print_lstmap(tmp_map);
 	if (store_map_data(data, tmp_map))
-		return (free_lstmap(maplst), free_img(data->image), 1);
+		return (free_lstmap(maplst), err_msg(MAP_INV, NULL, 1), 3);
 	free_lstmap(maplst);
 	return (0);
 }

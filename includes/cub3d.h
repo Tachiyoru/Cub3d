@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:13:42 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 16:39:34 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	ft_free(void *addr);
 void	free_lstmap(t_lst *lst_map);
 void	free_img(t_image img);
 void	free_all(t_data *data);
+void	free_tab(char **tab, int n);
 
 ////****************** INIT *******************////
 
@@ -125,10 +126,11 @@ int		check_map(t_data *data, char *file);
 int		check_ext(char *file, char *str);
 int		check_open(t_image img);
 void	close_txtures(int *fd);
+int		check_cub(char *file);
+char	**create_copy_map(char **map);
 
 // data_map.c
 int		store_map_data(t_data *data, t_lst *tmp_map);
-int		verif_char(t_lst *check);
 
 // init_map.c
 int		init_map(t_data *data, int fd);
@@ -136,6 +138,11 @@ t_lst	*store_map(int fd);
 int		store_path(t_data *data, t_lst *maplst, int a);
 int		store_path_2(t_data *data, t_lst *maplst, int a);
 int		check_path(t_data *data);
+
+// parsing_map.c
+int		check_space(t_data *data);
+int		recursive(char **map, int y, int x);
+int		verif_char(t_lst *check);
 
 ////****************** UTILS ******************////
 
