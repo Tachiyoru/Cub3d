@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/04 19:32:20 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:47:03 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@
 
 # define BUFFER_SIZE 10
 
-char		*get_next_line(int fd, int reset);
-char		*ft_read_line(int fd, char *line);
-char		*ft_strchr(char *s, int c);
-char		*ft_strjoin(char *line, char *buff);
-char		*ft_line_to_buff(char *line);
-char		*ft_read_new_line(char *line);
+char	*get_next_line(int fd, int reset);
+char	*ft_read_line(int fd, char *line);
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *line, char *buff);
+char	*ft_line_to_buff(char *line);
+char	*ft_read_new_line(char *line);
 
 /****************************/
 /*			STRUCTS			*/
@@ -93,6 +93,7 @@ typedef struct s_lst
 
 void	print_lstmap(t_lst *lst);
 void	print_path(t_data *data);
+void	print_tab(char **tab);
 
 /****************************************************/
 /*						FCTS						*/
@@ -123,6 +124,10 @@ void	init_to_null_img(t_data *data);
 int		check_map(t_data *data, char *file);
 int		check_cub(char *file);
 
+// data_map.c
+int		store_map_data(t_data *data, t_lst *tmp_map);
+int		verif_char(t_lst *check);
+
 // init_map.c
 int		init_map(t_data *data, int fd);
 t_lst	*store_map(int fd);
@@ -139,7 +144,6 @@ void	*ft_calloc(size_t n, size_t size);
 t_lst	*ft_lstnew(char *str);
 t_lst	*ft_lstlast(t_lst *lst);
 int		ft_lstsize(t_lst *lst);
-
 
 // str_utils.c
 int		ft_strlen(char *str);

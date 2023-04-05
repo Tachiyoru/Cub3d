@@ -17,8 +17,9 @@ SRCS		=	main.c					\
 				free.c					\
 				get_next_line.c			\
 				get_next_line_utils.c	\
-				init_to_null.c					\
+				init_to_null.c			\
 				check_map.c				\
+				data_map.c				\
 				init_map.c				\
 				alloc.c					\
 				lst_utils.c				\

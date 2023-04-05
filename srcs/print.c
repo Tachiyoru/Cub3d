@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:44:02 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/04 19:17:14 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:34:32 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,14 @@ void	print_lstmap(t_lst *lst)
 		printf("%s", tmp->mapline);
 		tmp = tmp->next;
 	}
+}
+
+void	print_tab(char **tab)
+{
+	int	i;
+
+	i = -1;
+	printf("tab = \n");
+	while (tab[++i])
+		printf("%s\n", tab[i]);
 }

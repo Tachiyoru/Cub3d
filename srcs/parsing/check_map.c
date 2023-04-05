@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/04 20:05:19 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 13:42:45 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,15 @@ int	check_map(t_data *data, char *file)
 	if (init_map(data, fd))
 		return (close(fd), 3);
 	close(fd);
+	print_tab(data->map.map);
+	printf("\nsixe_x = %d", data->map.size_x);
+	printf(" / sixe_y = %d\n", data->map.size_y);
+	printf("ready for next\n");
 	return (0);
 }
+	// check_open(data->image); // check que c bien des xpm et si on peut les ouvrir
+	// check_player(data->map);
+	// check_wall(data->map)
 
 /**
  * @brief

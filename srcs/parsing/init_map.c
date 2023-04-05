@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:06:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/04 19:42:50 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:22:14 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	init_map(t_data *data, int fd)
 {
 	t_lst	*maplst;
 	t_lst	*tmp_map;
+
 	maplst = store_map(fd);
 	if (!maplst)
 		return (1);
@@ -32,11 +33,13 @@ int	init_map(t_data *data, int fd)
 			err_msg(MAP_INV, NULL, 2));
 	printf("******************************************\n\n");
 	print_lstmap(tmp_map);
-	// remplissage char **map
-	//check wall
+	if (store_map_data(data, tmp_map))
+		return (free_lstmap(maplst), free_img(data->image), 1);
 	free_lstmap(maplst);
 	return (0);
 }
+	// remplissage char **map
+	//check wall apres ini_map
 
 t_lst	*store_map(int fd)
 {

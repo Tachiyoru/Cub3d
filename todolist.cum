@@ -1,5 +1,0 @@
-On envoie a partir de init_map l 33 le tmp qui est au debut de map
-On check si chaque ligne de tmp->mapline a un 1
-sinon map invalid
-et si on arrive a tmp->mapline == NULL le tmp envoye etait bien le debut la map
-donc on le met dans un char **
