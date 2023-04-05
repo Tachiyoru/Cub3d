@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:44:02 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 13:34:32 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 18:20:39 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,9 @@ void	print_tab(char **tab)
 	i = -1;
 	printf("tab = \n");
 	while (tab[++i])
-		printf("%s\n", tab[i]);
+	{
+		if (tab[i][0] == '\n')
+			printf("ooooooooooooo");
+	}
+	printf("%s\n", tab[i]);
 }

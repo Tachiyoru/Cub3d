@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 17:18:40 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:45:54 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_player(char **map)
+{
+	int	i;
+	int	j;
+	int	p;
+
+	i = -1;
+	p = 0;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'W' || map[i][j] == 'E')
+			{
+				p += 1;
+				map[i][j] = '0';
+			}
+		}
+	}
+	if (p < 1)
+		return (err_msg(NO_PLAYER, NULL, 1));
+	else if (p > 1)
+		return (err_msg(TOO_PLAYER, NULL, 1));
+	return (0);
+}
 
 int	check_space(t_data *data)
 {
