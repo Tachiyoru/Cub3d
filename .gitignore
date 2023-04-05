@@ -1,3 +1,4 @@
 *.nfs
 objs/
 cub3d
+.vscode

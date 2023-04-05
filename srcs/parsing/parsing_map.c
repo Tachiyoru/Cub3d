@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 16:36:50 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:41:07 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	check_space(t_data *data)
 		{
 			if (map[y][x] == ' ')
 				if (recursive(map, y, x))
-				{
-					free_tab(map, 0);
-					return (1);
-				}
+					return (free_tab(map, 0), 1);
 			x++;
 		}
 		y++;
