@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 18:48:53 by msharifi         ###   ########.fr       */
+/*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
+/*   Updated: 2023/04/05 18:49:20 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+int	init_mlx(t_data *data)
 {
-	t_data	data;
-
-	data = (t_data){0};
-	if (ac != 2)
-		return (err_msg(ARG_START, NULL, 1));
-	if (check_map(&data, av[1]))
-		return (2);
-	if (init_mlx(&data))
-		return (free_all(&data), 3);
-	free_all(&data);
+	// data->window_width = IMG_SIZE * data->map.line_len;
+	// data->window_height = IMG_SIZE * data->map.line_count;
+	data->mlx_ptr = mlx_init();
+	if (data->mlx_ptr == NULL)
+		return (1);
+	// data->win_ptr = mlx_new_window(data->mlx_ptr, data->window_width,
+	// 		data->window_height, "Shanuel");
+	// if (data->win_ptr == NULL)
+	// 	return (2);
 	return (0);
 }

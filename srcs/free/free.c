@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 17:12:51 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:48:45 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	free_all(t_data *data)
 {
 	free_path(data->image);
 	free_tab(data->map.map, 0);
+	destroy_all(data);
 }
 
 // Free un char **, si n == 0 en etierete, sinon jusqu'a n

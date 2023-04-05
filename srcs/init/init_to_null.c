@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_to_null.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 11:39:11 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/05 18:41:03 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_to_null_data(t_data *data)
 {
 	data->mlx_ptr = NULL;
-	data->win_lentgh = 0;
 	data->win_ptr = NULL;
+	data->win_lentgh = 0;
 	data->win_width = 0;
 	data->player.start_x = 0;
 	data->player.start_y = 0;
