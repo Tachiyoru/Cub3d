@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_to_null.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 19:11:34 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:08:46 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	init_to_null_data(t_data *data)
 	data->map.map = NULL;
 	data->map.size_x = 0;
 	data->map.size_y = 0;
+	data->image.color_c = 0;
+	data->image.color_f = 0;
 	init_to_null_img(data);
 }
 

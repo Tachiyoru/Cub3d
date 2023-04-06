@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 16:26:12 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:30:52 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ typedef struct s_image
 	char	*path_e;
 	char	*path_f;
 	char	*path_c;
+	int		color_c;
+	int		color_f;
 }t_image;
 
 typedef struct s_player
@@ -127,6 +129,11 @@ int		store_path(t_data *data, t_lst *maplst, int a);
 int		store_path_2(t_data *data, t_lst *maplst, int a);
 int		check_path(t_data *data);
 
+// init_rgb.c
+int		init_rgb(t_data *data);
+int		check_tab(char **tab);
+int		make_rgb(int r, int g, int b);
+
 // init_to_null.c
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
@@ -167,10 +174,16 @@ t_lst	*ft_lstnew(char *str);
 t_lst	*ft_lstlast(t_lst *lst);
 int		ft_lstsize(t_lst *lst);
 
+// split.c
+char	**ft_split(char	*str, char set);
+
 // str_utils.c
 int		ft_strlen(char *str);
 char	*ft_strndup(char *str, int n);
 int		ft_strncmp(char *str, char *to_find, int n);
 int		ft_strchr2(char *str, char c);
+
+// utils.c
+long	ft_atoi(char *str);
 
 #endif
