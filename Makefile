@@ -22,6 +22,7 @@ SRCS		=	main.c					\
 				get_next_line_utils.c	\
 				init_mlx.c				\
 				init_map.c				\
+				init_rgb.c				\
 				init_to_null.c			\
 				keypress.c				\
 				check_map.c				\
@@ -29,7 +30,9 @@ SRCS		=	main.c					\
 				parsing_map.c			\
 				alloc.c					\
 				lst_utils.c				\
-				str_utils.c
+				split.c					\
+				str_utils.c				\
+				utils.c
 
 OBJS		=	$(SRCS:%.c=${OBJ_DIR}/%.o)
 
