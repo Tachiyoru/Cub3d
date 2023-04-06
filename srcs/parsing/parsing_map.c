@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/06 14:57:21 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:00:38 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	check_around(char **map, int y, int x)
 		return (1);
 	else if (x - 1 < 0 || ((map[y][x - 1] != '1' && map[y][x - 1] != '0')))
 		return (1);
-	else if (x > ft_strlen(map[y + 1])
+	else if (x >= ft_strlen(map[y + 1])
 		|| (map[y + 1][x] != '1' && map[y + 1][x] != '0'))
 		return (1);
 	else if ((x > ft_strlen(map[y - 1])
