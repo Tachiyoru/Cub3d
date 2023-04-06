@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:52:16 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 18:46:23 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/06 16:49:00 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define MAP_INV	"Invalid map"
 # define OPEN_TXTUR	"Could not open all the textures"
 # define WALLS		"Map is not closed by walls"
+# define RGB		"RGB given are incorrect"
 # define NO_PLAYER	"No player in map"
 # define TOO_PLAYER	"Too many player in map"
 
