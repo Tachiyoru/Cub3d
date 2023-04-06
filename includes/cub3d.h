@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 16:24:04 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:26:12 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,6 @@ int		check_map(t_data *data, char *file);
 int		check_ext(char *file, char *str);
 int		check_open(t_image img);
 void	close_txtures(int *fd);
-int		check_cub(char *file);
 char	**create_copy_map(char **map);
 
 // data_map.c
