@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 19:07:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:57:21 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,52 +39,6 @@ int	is_player(t_data *data, char **map)
 		return (err_msg(NO_PLAYER, NULL, 1));
 	else if (p > 1)
 		return (err_msg(TOO_PLAYER, NULL, 1));
-	return (0);
-}
-
-int	check_space(t_data *data)
-{
-	int		x;
-	int		y;
-	char	**map;
-
-	y = 0;
-	map = create_copy_map(data->map.map);
-	if (!map)
-		return (1);
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == ' ')
-				if (recursive(map, y, x))
-					return (free_tab(map, 0), 1);
-			x++;
-		}
-		y++;
-	}
-	free_tab(map, 0);
-	return (0);
-}
-
-int	recursive(char **map, int y, int x)
-{
-	if (map[y][x] == '0')
-		return (1);
-	map[y][x] = '1';
-	if (x - 1 > 0 && map[y][x - 1] != '1')
-		if (recursive(map, y, x - 1))
-			return (1);
-	if (y - 1 > 0 && map[y - 1][x] != '1')
-		if (recursive(map, y - 1, x))
-			return (1);
-	if (x + 1 < ft_strlen(map[y]) && map[y][x + 1] != '1')
-		if (recursive(map, y, x + 1))
-			return (1);
-	if (map[y + 1] && map[y + 1][x] != '1')
-		if (recursive(map, y + 1, x))
-			return (1);
 	return (0);
 }
 
@@ -135,14 +89,16 @@ int	check_wall(char **map)
 
 int	check_around(char **map, int y, int x)
 {
-	if (x + 1 < ft_strlen(map[y]) && map[y][x + 1] != '1'
-		&& map[y][x + 1] != '0')
+	if (x + 1 >= ft_strlen(map[y]) && (map[y][x + 1] != '1'
+		&& map[y][x + 1] != '0'))
 		return (1);
-	else if (x - 1 > 0 && map[y][x - 1] != '1' && map[y][x - 1] != '0')
+	else if (x - 1 < 0 || ((map[y][x - 1] != '1' && map[y][x - 1] != '0')))
 		return (1);
-	else if (map[y + 1] && map[y + 1][x] != '1' && map[y + 1][x] != '0')
+	else if (x > ft_strlen(map[y + 1])
+		|| (map[y + 1][x] != '1' && map[y + 1][x] != '0'))
 		return (1);
-	else if (y - 1 > 0 && map[y - 1][x] != '1' && map[y - 1][x] != '0')
+	else if ((x > ft_strlen(map[y - 1])
+		|| (map[y - 1][x] != '1' && map[y - 1][x] != '0')))
 		return (1);
 	return (0);
 }

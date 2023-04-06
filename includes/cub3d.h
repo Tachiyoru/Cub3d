@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 19:38:06 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:57:37 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,6 @@ int		verif_data(char **map);
 
 // parsing_map.c
 int		is_player(t_data *data, char **map);
-int		check_space(t_data *data);
-int		recursive(char **map, int y, int x);
 int		verif_char(t_lst *check);
 int		check_wall(char **map);
 int		check_around(char **map, int y, int x);

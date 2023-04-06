@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 19:07:44 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 14:58:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ int	check_map(t_data *data, char *file)
 		return (close(fd), 3);
 	close(fd);
 	//check_open(data->image)
-	if (check_space(data))
-		return (free_tab(data->map.map, 0), free_path(data->image),
-			err_msg(MAP_INV, NULL, 4));
 	if (check_wall(data->map.map))
 		return (free_tab(data->map.map, 0), free_path(data->image),
 			err_msg(WALLS, NULL, 5));
