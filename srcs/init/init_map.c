@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:06:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 19:06:42 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:24:30 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	init_map(t_data *data, int fd)
 	}
 	if (check_path(data))
 		return (err_msg(MAP_INV, NULL, 2));
-	if (store_map_data(data, tmp_map) || is_player(data, data->map.map) || verif_data(data->map.map))
+	if (store_map_data(data, tmp_map) || is_player(data, data->map.map)
+		|| verif_data(data->map.map))
 		return (free_all(data), free_lstmap(maplst),
 			err_msg(MAP_INV, NULL, 1), 3);
 	free_lstmap(maplst);

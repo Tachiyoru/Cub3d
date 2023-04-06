@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/06 15:00:38 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:24:23 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int	is_player(t_data *data, char **map)
 			}
 		}
 	}
+	return (return_is_player(p));
+}
+
+int	return_is_player(int p)
+{
 	if (p < 1)
 		return (err_msg(NO_PLAYER, NULL, 1));
 	else if (p > 1)
@@ -98,7 +103,7 @@ int	check_around(char **map, int y, int x)
 		|| (map[y + 1][x] != '1' && map[y + 1][x] != '0'))
 		return (1);
 	else if ((x > ft_strlen(map[y - 1])
-		|| (map[y - 1][x] != '1' && map[y - 1][x] != '0')))
+			|| (map[y - 1][x] != '1' && map[y - 1][x] != '0')))
 		return (1);
 	return (0);
 }
