@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:19:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 16:07:48 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/06 16:49:49 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	init_rgb(t_data *data)
 
 	tab = ft_split(data->image.path_c, ',');
 	if (check_tab(tab))
-		return (1);
+		return (free_tab(tab, 0), 1);
 	tab_int[0] = ft_atoi(tab[0]);
 	tab_int[1] = ft_atoi(tab[1]);
 	tab_int[2] = ft_atoi(tab[2]);
@@ -37,7 +37,7 @@ int	init_rgb(t_data *data)
 	free_tab(tab, 0);
 	tab = ft_split(data->image.path_f, ',');
 	if (check_tab(tab))
-		return (1);
+		return (free_tab(tab, 0), 1);
 	tab_int[0] = ft_atoi(tab[0]);
 	tab_int[1] = ft_atoi(tab[1]);
 	tab_int[2] = ft_atoi(tab[2]);
