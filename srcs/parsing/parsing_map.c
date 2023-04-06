@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/06 16:24:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:06:57 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	is_player(t_data *data, char **map)
 			if (map[i][j] == 'N' || map[i][j] == 'S'
 				|| map[i][j] == 'W' || map[i][j] == 'E')
 			{
-				p += 1;
+				p++;
+				data->player.start_dir = map[i][j];
 				map[i][j] = '0';
 				data->player.start_y = i;
 				data->player.start_x = j;

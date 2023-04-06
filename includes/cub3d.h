@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 16:30:52 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/06 19:11:49 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ typedef struct s_player
 {
 	int		start_x;
 	int		start_y;
+	char	start_dir;
+	double	dir_x;
+	double	dir_y;
 }t_player;
 
 typedef struct s_data
@@ -84,6 +87,22 @@ typedef struct s_data
 	t_map		map;
 	t_player	player;
 }t_data;
+
+typedef struct s_rc
+{
+	int		side;
+	double	raydir_x;
+	double	raydir_y;
+	double	sideDistX;
+	double	sideDistY;
+	double	d_dist_x;
+	double	d_dist_y;
+}t_rc;
+
+// // ??
+// int		stepX;
+// int		stepY;
+
 
 typedef struct s_lst
 {

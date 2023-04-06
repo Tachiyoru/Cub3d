@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:06:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/06 16:30:38 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/06 17:07:27 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	init_map(t_data *data, int fd)
 		tmp_map = tmp_map->next;
 	}
 	if (check_path(data))
-		return (err_msg(MAP_INV, NULL, 2));
+		return (free_all(data), free_lstmap(maplst), err_msg(MAP_INV, NULL, 2));
 	if (store_map_data(data, tmp_map) || is_player(data, data->map.map)
 		|| verif_data(data->map.map))
 		return (free_all(data), free_lstmap(maplst),
