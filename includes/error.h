@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:52:16 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 14:50:21 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:22:06 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define ARG_START	"Run as : ./cub3d map"
 # define NOT_CUM	" : map is not a .cub"
+# define XPM		" : failed to convert into xpm"
 # define NOT_XPM	" : texture is not a .xpm"
 # define OPEN		" : open failed"
 # define MALLOC		"Malloc failed"

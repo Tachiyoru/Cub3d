@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 18:11:08 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:18:30 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,10 @@ void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
 void	init_rc_to_null(t_rc *rc);
 void	init_txturs_to_null(t_data *data);
+
+// init_txturs.c
+int		init_textures(t_data *data);
+
 
 ////***************** KEYPRESS ****************////
 
