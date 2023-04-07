@@ -1,0 +1,4 @@
+To rotate a vector, multiply it with the rotation matrix
+
+[ cos(a) -sin(a) ]
+[ sin(a)  cos(a) ]
