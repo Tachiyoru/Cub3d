@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/06 19:06:57 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:45:43 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,26 @@ int	is_player(t_data *data, char **map)
 				|| map[i][j] == 'W' || map[i][j] == 'E')
 			{
 				p++;
-				data->player.start_dir = map[i][j];
-				map[i][j] = '0';
-				data->player.start_y = i;
-				data->player.start_x = j;
+				set_value(data, map[i][j], i, j);
 			}
 		}
 	}
 	return (return_is_player(p));
+}
+
+void	set_value(t_data *data, char c, int i, int j)
+{
+	if (c == 'N')
+		data->player.angle = data->pi / 2;
+	else if (c == 'S')
+		data->player.angle = 1.5 * data->pi;
+	else if (c == 'E')
+		data->player.angle = data->pi;
+	else if (c == 'W')
+		data->player.angle = 0;
+	data->map.map[i][j] = '0';
+	data->player.pos_y = i;
+	data->player.pos_x = j;
 }
 
 int	return_is_player(int p)

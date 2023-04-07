@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 19:11:49 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:45:14 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
+# include <X11/X.h>
 
 # define K_ESC			65307
 # define K_UP			65362
@@ -72,17 +74,20 @@ typedef struct s_image
 
 typedef struct s_player
 {
-	int		start_x;
-	int		start_y;
-	char	start_dir;
-	double	dir_x;
-	double	dir_y;
+	double	pos_x;
+	double	pos_y;
+	double	pixel_x;
+	double	pixel_y;
+	double	angle;
+
 }t_player;
 
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	double		pi;
+	double		delta[2];
 	t_image		image;
 	t_map		map;
 	t_player	player;
@@ -178,10 +183,14 @@ int		verif_data(char **map);
 
 // parsing_map.c
 int		is_player(t_data *data, char **map);
+void	set_value(t_data *data, char c, int i, int j);
 int		return_is_player(int p);
 int		verif_char(t_lst *check);
 int		check_wall(char **map);
 int		check_around(char **map, int y, int x);
+
+////*************** RAYCASTING ****************////
+int		init_rc(t_data *data);
 
 ////****************** UTILS ******************////
 

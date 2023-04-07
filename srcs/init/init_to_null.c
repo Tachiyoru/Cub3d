@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/06 16:08:46 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/07 13:17:48 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	init_to_null_data(t_data *data)
 {
+	data->pi = 3.14159265358979323846;
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
-	data->player.start_x = 0;
-	data->player.start_y = 0;
+	data->player.pos_x = 0;
+	data->player.pos_y = 0;
 	data->map.map = NULL;
 	data->map.size_x = 0;
 	data->map.size_y = 0;

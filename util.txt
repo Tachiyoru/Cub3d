@@ -1,0 +1,18 @@
+To rotate a vector, multiply it with the rotation matrix
+
+[ cos(a) -sin(a) ]
+[ sin(a)  cos(a) ]
+sqrt(dx2 + dy2)
+
+deplacement lateral = sqrt(le deplacement^2 + (dy/dx)^2)
+deplacement vertical = sqrt(le deplacement^2 + (dy/dx)^2)
+
+start + dir + length = end
+
+key = a : pa -= 0.1; if (pa < 0) pa += 2PI;
+	pdx = cos(pa) *5; pdy = sin(pa) *5;
+key = d : pa += 0.1; if (pa > 2PI) pa -= 2PI;
+	pdx = cos(pa) *5; pdy = sin(pa) *5;
+key = w : px += pdx; py += pdy;
+key = s : px -= pdx; py -= pdy;
+
