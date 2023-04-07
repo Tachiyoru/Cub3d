@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 13:24:12 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/07 14:39:47 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_player(t_data *data, char **map)
 	return (return_is_player(p));
 }
 
-static void	set_value(t_data *data, char c, int i, int j)
+void	set_value(t_data *data, char c, int i, int j)
 {
 	if (c == 'N')
 		data->player.angle = data->pi / 2;

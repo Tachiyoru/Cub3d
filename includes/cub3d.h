@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 13:32:44 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/07 14:40:00 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ int		verif_data(char **map);
 
 // parsing_map.c
 int		is_player(t_data *data, char **map);
+void	set_value(t_data *data, char c, int i, int j);
 int		return_is_player(int p);
 int		verif_char(t_lst *check);
 int		check_wall(char **map);

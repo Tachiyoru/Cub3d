@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:26:56 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 13:41:12 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/07 14:41:50 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ typedef struct s_dir
 	double	plan_y;
 }	t_dir;
 
-int	init_rc(t_data *data)
-{
-	int		x;
-	int		r;
-	float	ra;
-	double	dist[2];
-	double	end_pos[2][2];
+// int	init_rc(t_data *data)
+// {
+	// int		x;
+	// int		r;
+	// float	ra;
+	// double	dist[2];
+	// double	end_pos[2][2];
 
-	init_player(data);
-	x = 0;
-	r = 0;
-	ra = data->player.angle - ((1 * data->pi / 180) * 30);
-	while (r < 1000)
-	{
-	}
-}
+	// init_player(data);
+	// x = 0;
+	// r = 0;
+	// ra = data->player.angle - ((1 * data->pi / 180) * 30);
+	// while (r < 1000)
+	// {
+	// }
+// }
 
 void	init_player(t_data *data)
 {
