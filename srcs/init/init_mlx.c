@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 17:39:02 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:08:46 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	init_mlx(t_data *data)
 			"Shanuel");
 	if (data->win_ptr == NULL)
 		return (2);
+	if (init_images(data))
+		return (3);
 	return (0);
 }
 
@@ -28,21 +30,21 @@ int	init_images(t_data *data)
 {
 	data->image.width = WIDTH_IMG;
 	data->image.height = HEIGHT_IMG;
-	data->image.n_img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_n,\
+	data->txt[0].img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_n,\
 		&data->image.width, &data->image.height);
-	if (!data->image.n_img)
+	if (!data->txt[0].img)
 		return (err_msg("sdgdgjsdj", NULL, 1));
-	data->image.s_img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_s,\
+	data->txt[1].img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_s,\
 		&data->image.width, &data->image.height);
-	if (!data->image.s_img)
+	if (!data->txt[1].img)
 		return (err_msg("sdgdgjsdj", NULL, 2));
-	data->image.w_img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_w,\
+	data->txt[2].img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_w,\
 		&data->image.width, &data->image.height);
-	if (!data->image.w_img)
+	if (!data->txt[2].img)
 		return (err_msg("sdgdgjsdj", NULL, 3));
-	data->image.e_img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_e,\
+	data->txt[3].img = mlx_xpm_file_to_image(data->mlx_ptr, data->image.path_e,\
 		&data->image.width, &data->image.height);
-	if (!data->image.e_img)
+	if (!data->txt[3].img)
 		return (err_msg("sdgdgjsdj", NULL, 4));
 	return (0);
 }

@@ -24,6 +24,7 @@ SRCS		=	main.c					\
 				init_map.c				\
 				init_rgb.c				\
 				init_to_null.c			\
+				init_txturs.c			\
 				keypress.c				\
 				check_map.c				\
 				data_map.c				\

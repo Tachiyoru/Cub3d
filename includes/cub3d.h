@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 17:36:36 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:11:08 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,18 @@ typedef struct s_image
 	char	*path_c;
 	int		color_c;
 	int		color_f;
-	void	*n_img;
-	void	*s_img;
-	void	*w_img;
-	void	*e_img;
 }t_image;
+
+typedef struct s_txturs
+{
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		floor;
+	int		cell;
+}t_txturs;
 
 typedef struct s_player
 {
@@ -115,6 +122,7 @@ typedef struct s_data
 	void		*win_ptr;
 	double		delta[2];
 	t_image		image;
+	t_txturs	txt[4];
 	t_map		map;
 	t_player	player;
 	t_rc		rc;
@@ -147,6 +155,7 @@ int		err_msg(char *s1, char *s2, int ret_val);
 ////****************** FREE *******************////
 
 // free_mlx.c
+void	destroy_images(t_data *data);
 int		destroy_all(t_data *data);
 
 // free.c
@@ -179,6 +188,7 @@ int		make_rgb(int r, int g, int b);
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
 void	init_rc_to_null(t_rc *rc);
+void	init_txturs_to_null(t_data *data);
 
 ////***************** KEYPRESS ****************////
 

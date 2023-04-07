@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 15:19:34 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:06:24 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_to_null_data(t_data *data)
 	data->image.color_c = 0;
 	data->image.color_f = 0;
 	init_to_null_img(data);
+	init_txturs_to_null(data);
 }
 
 void	init_to_null_img(t_data *data)
@@ -50,4 +51,22 @@ void	init_rc_to_null(t_rc *rc)
 	rc->side_dist_y = 0;
 	rc->v_dir_x = 0;
 	rc->v_dir_y = 0;
+}
+
+void	init_txturs_to_null(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		data->txt[i].addr = NULL;
+		data->txt[i].bpp = 0;
+		data->txt[i].cell = 0;
+		data->txt[i].endian = 0;
+		data->txt[i].floor = 0;
+		data->txt[i].img= NULL;
+		data->txt[i].line_len = 0;
+		i++;
+	}
 }
