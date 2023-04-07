@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/06 16:24:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 13:24:12 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,27 @@ int	is_player(t_data *data, char **map)
 			if (map[i][j] == 'N' || map[i][j] == 'S'
 				|| map[i][j] == 'W' || map[i][j] == 'E')
 			{
-				p += 1;
-				map[i][j] = '0';
-				data->player.start_y = i;
-				data->player.start_x = j;
+				p++;
+				set_value(data, map[i][j], i, j);
 			}
 		}
 	}
 	return (return_is_player(p));
+}
+
+static void	set_value(t_data *data, char c, int i, int j)
+{
+	if (c == 'N')
+		data->player.angle = data->pi / 2;
+	else if (c == 'S')
+		data->player.angle = 1.5 * data->pi;
+	else if (c == 'E')
+		data->player.angle = data->pi;
+	else if (c == 'W')
+		data->player.angle = 0;
+	data->map.map[i][j] = '0';
+	data->player.pos_y = i;
+	data->player.pos_x = j;
 }
 
 int	return_is_player(int p)

@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 16:30:52 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/07 13:32:44 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
+# include <X11/X.h>
 
 # define K_ESC			65307
 # define K_UP			65362
@@ -72,14 +74,20 @@ typedef struct s_image
 
 typedef struct s_player
 {
-	int		start_x;
-	int		start_y;
+	double	pos_x;
+	double	pos_y;
+	double	pixel_x;
+	double	pixel_y;
+	double	angle;
+
 }t_player;
 
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	double		pi;
+	double		delta[2];
 	t_image		image;
 	t_map		map;
 	t_player	player;
@@ -163,6 +171,9 @@ int		return_is_player(int p);
 int		verif_char(t_lst *check);
 int		check_wall(char **map);
 int		check_around(char **map, int y, int x);
+
+////*************** RAYCASTING ****************////
+int		init_rc(t_data *data);
 
 ////****************** UTILS ******************////
 
