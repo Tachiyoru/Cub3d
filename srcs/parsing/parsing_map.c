@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 14:45:43 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 15:18:24 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ int	is_player(t_data *data, char **map)
 void	set_value(t_data *data, char c, int i, int j)
 {
 	if (c == 'N')
-		data->player.angle = data->pi / 2;
+		data->player.angle = PI / 2;
 	else if (c == 'S')
-		data->player.angle = 1.5 * data->pi;
+		data->player.angle = 1.5 * PI;
 	else if (c == 'E')
-		data->player.angle = data->pi;
+		data->player.angle = PI * 2;
 	else if (c == 'W')
 		data->player.angle = 0;
 	data->map.map[i][j] = '0';

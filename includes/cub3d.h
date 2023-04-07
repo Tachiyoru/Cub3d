@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 14:45:14 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:36:36 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # include <math.h>
 # include <X11/X.h>
 
+# define PI				3.1415926535
+# define WIDTH_IMG		64
+# define HEIGHT_IMG		64
+# define WIDTH_SCREEN	1000
+# define HEIGHT_SCREEN	600
 # define K_ESC			65307
 # define K_UP			65362
 # define K_DOWN			65364
@@ -63,6 +68,8 @@ typedef struct s_map
 typedef struct s_image
 {
 	char	*path_n;
+	int		width;
+	int		height;
 	char	*path_s;
 	char	*path_w;
 	char	*path_e;
@@ -70,6 +77,10 @@ typedef struct s_image
 	char	*path_c;
 	int		color_c;
 	int		color_f;
+	void	*n_img;
+	void	*s_img;
+	void	*w_img;
+	void	*e_img;
 }t_image;
 
 typedef struct s_player
@@ -82,27 +93,32 @@ typedef struct s_player
 
 }t_player;
 
+typedef struct s_rc
+{
+	int		side;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+	double	v_dir_x;
+	double	v_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	plan_x;
+	double	plan_y;
+	double	d_dist_x;
+	double	d_dist_y;
+}t_rc;
+
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	double		pi;
 	double		delta[2];
 	t_image		image;
 	t_map		map;
 	t_player	player;
+	t_rc		rc;
 }t_data;
-
-typedef struct s_rc
-{
-	int		side;
-	double	raydir_x;
-	double	raydir_y;
-	double	sideDistX;
-	double	sideDistY;
-	double	d_dist_x;
-	double	d_dist_y;
-}t_rc;
 
 // // ??
 // int		stepX;
@@ -144,6 +160,7 @@ void	free_tab(char **tab, int n);
 
 // init_mlx.c
 int		init_mlx(t_data *data);
+int		init_images(t_data *data);
 void	loop_hook(t_data data);
 
 // init_map.c
@@ -161,6 +178,7 @@ int		make_rgb(int r, int g, int b);
 // init_to_null.c
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
+void	init_rc_to_null(t_rc *rc);
 
 ////***************** KEYPRESS ****************////
 
