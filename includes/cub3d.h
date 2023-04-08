@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/08 19:31:06 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:12:35 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <X11/X.h>
 
 # define PI				3.1415926535
+# define DR				0.0174533
 # define WIDTH_IMG		64
 # define HEIGHT_IMG		64
 # define WIDTH_SCREEN	1000
