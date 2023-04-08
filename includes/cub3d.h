@@ -7,7 +7,11 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/04/08 19:31:06 by msharifi         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/08 18:54:08 by msharifi         ###   ########.fr       */
+>>>>>>> parent of 697c86b ([CLEAN] sans rc)
 =======
 /*   Updated: 2023/04/08 18:54:08 by msharifi         ###   ########.fr       */
 >>>>>>> parent of 697c86b ([CLEAN] sans rc)
@@ -109,9 +113,12 @@ typedef struct s_player
 typedef struct s_rc
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	double	ray_angle;
 	
 =======
+=======
+>>>>>>> parent of 697c86b ([CLEAN] sans rc)
 	int		side;
 	int		hit;
 	int		draw_start;
@@ -131,6 +138,9 @@ typedef struct s_rc
 	double	plan_y;
 	double	d_dist_x;
 	double	d_dist_y;
+<<<<<<< HEAD
+>>>>>>> parent of 697c86b ([CLEAN] sans rc)
+=======
 >>>>>>> parent of 697c86b ([CLEAN] sans rc)
 }t_rc;
 
