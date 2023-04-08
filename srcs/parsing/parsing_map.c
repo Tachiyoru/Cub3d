@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 15:18:24 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:34:11 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	set_value(t_data *data, char c, int i, int j)
 		data->player.angle = PI * 2;
 	else if (c == 'W')
 		data->player.angle = 0;
+	data->rc.ray_angle = data->player.angle;
 	data->map.map[i][j] = '0';
 	data->player.pos_y = i;
 	data->player.pos_x = j;

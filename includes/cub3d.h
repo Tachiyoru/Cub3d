@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/08 19:22:18 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:31:06 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,12 @@ typedef struct s_player
 
 }t_player;
 
+typedef struct s_rc
+{
+	double	ray_angle;
+	
+}t_rc;
+
 typedef struct s_data
 {
 	void		*mlx_ptr;
@@ -94,6 +100,7 @@ typedef struct s_data
 	double		delta[2];
 	t_image		image;
 	t_map		map;
+	t_rc		rc;
 	t_player	player;
 }t_data;
 
