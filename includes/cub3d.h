@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/08 19:51:59 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/08 21:19:07 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@
 # define K_D			100
 
 # define SCREEN_WIDTH	1000
-# define SCREEN_LENGTH	600
+# define SCREEN_HEIGTH	600
 # define IMG_SIZE		64
-# define M_PI			3.14159
+# define M_PI			3.14159265358979323846
 
 enum	e_player
 {
@@ -49,6 +49,18 @@ enum	e_player
 	POS_PXL_Y,
 	ANGLE,
 	MAX_POS,
+};
+
+enum	e_img
+{
+	WALL_NORTH,
+	WALL_SOUTH,
+	WALL_WEST,
+	WALL_EAST,
+	IMAGE,
+	FLOOR_IMG,
+	CEILING_IMG,
+	MAX_IMG,
 };
 
 /****************************/
@@ -87,16 +99,16 @@ typedef struct s_path
 	int		color_f;
 }t_path;
 
-typedef struct s_img
+typedef struct s_image
 {
 	void	*img;
 	int		*addr;
-	int		bits_per_pixel;
-	int		line_length;
+	int		bpp;
+	int		line_len;
 	int		endian;
 	int		width;
 	int		height;
-}t_img;
+}t_image;
 
 typedef struct s_rayon
 {
@@ -112,10 +124,10 @@ typedef struct s_data
 	void		*win_ptr;
 	double		delta[2];
 	double		player[MAX_POS];
-	t_img		img[6];
+	t_image		img[MAX_IMG];
 	t_path		image;
 	t_map		map;
-	t_rayon		rayon[SCREEN_WIDTH]
+	t_rayon		rayon[SCREEN_WIDTH];
 }t_data;
 
 typedef struct s_lst
@@ -123,6 +135,7 @@ typedef struct s_lst
 	char			*mapline;
 	struct s_lst	*next;
 }t_lst;
+
 
 void	print_lstmap(t_lst *lst);
 void	print_path(t_data *data);
@@ -145,14 +158,18 @@ int		destroy_all(t_data *data);
 // free.c
 void	ft_free(void *addr);
 void	free_lstmap(t_lst *lst_map);
-void	free_path(t_image img);
+void	free_path(t_path img);
 void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
+////****************** GAME *******************////
+
+int		render(t_data *data);
 
 ////****************** INIT *******************////
 
 // init_mlx.c
 int		init_mlx(t_data *data);
+int		init_images(t_data *data);
 void	loop_hook(t_data data);
 
 // init_map.c
@@ -171,6 +188,9 @@ int		make_rgb(int r, int g, int b);
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
 
+// init_txturs.c
+int		init_textures(t_data *data);
+
 ////***************** KEYPRESS ****************////
 
 // keypress.c
@@ -182,7 +202,7 @@ int		handle_btnrealease(t_data *data);
 //check_map.c
 int		check_map(t_data *data, char *file);
 int		check_ext(char *file, char *str);
-int		check_open(t_image img);
+int		check_open(t_path img);
 void	close_txtures(int *fd);
 char	**create_copy_map(char **map);
 

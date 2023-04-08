@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 17:05:47 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:42:18 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_ext(char *file, char *str)
 	return (0);
 }
 
-int	check_open(t_image img)
+int	check_open(t_path img)
 {
 	int		fd[4];
 

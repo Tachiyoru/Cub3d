@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/08 18:50:51 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:42:18 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_lstmap(t_lst *lst_map)
 	}
 }
 
-void	free_path(t_image img)
+void	free_path(t_path img)
 {
 	ft_free(img.path_n);
 	ft_free(img.path_s);

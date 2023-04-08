@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_txturs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:46:41 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 18:28:55 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:42:18 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int	check_textures_size(t_image img)
+// int	check_textures_size(t_path img)
 // {
 // 	void	*img_ptr;
 // 	// void	*mlx;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 15:18:24 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 20:44:18 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ int	is_player(t_data *data, char **map)
 void	set_value(t_data *data, char c, int i, int j)
 {
 	if (c == 'N')
-		data->player.angle = PI / 2;
+		data->player[ANGLE] = M_PI / 2;
 	else if (c == 'S')
-		data->player.angle = 1.5 * PI;
+		data->player[ANGLE] = 1.5 * M_PI;
 	else if (c == 'E')
-		data->player.angle = PI * 2;
+		data->player[ANGLE] = M_PI;
 	else if (c == 'W')
-		data->player.angle = 0;
+		data->player[ANGLE] = 0;
 	data->map.map[i][j] = '0';
-	data->player.pos_y = i;
-	data->player.pos_x = j;
+	data->player[POS_Y] = i;
+	data->player[POS_X] = j;
 }
 
 int	return_is_player(int p)
