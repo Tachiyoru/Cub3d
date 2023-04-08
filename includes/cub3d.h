@@ -6,15 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-<<<<<<< HEAD
-<<<<<<< HEAD
-/*   Updated: 2023/04/08 19:31:06 by msharifi         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/08 18:54:08 by msharifi         ###   ########.fr       */
->>>>>>> parent of 697c86b ([CLEAN] sans rc)
-=======
-/*   Updated: 2023/04/08 18:54:08 by msharifi         ###   ########.fr       */
->>>>>>> parent of 697c86b ([CLEAN] sans rc)
+/*   Updated: 2023/04/08 20:33:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +136,29 @@ typedef struct s_rc
 >>>>>>> parent of 697c86b ([CLEAN] sans rc)
 }t_rc;
 
+typedef struct s_rc
+{
+	int		side;
+	int		hit;
+	int		draw_start;
+	int		draw_end;
+	int		txt_dir;
+	double	txt_width;
+	float	line_height;
+	double	perp_wall_dist;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+	double	v_dir_x;
+	double	v_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	plan_x;
+	double	plan_y;
+	double	d_dist_x;
+	double	d_dist_y;
+}t_rc;
+
 typedef struct s_data
 {
 	void		*mlx_ptr;
@@ -152,9 +167,12 @@ typedef struct s_data
 	t_image		image;
 	t_txturs	img;
 	t_txturs	txt[4];
+	t_txturs	img;
+	t_txturs	txt[4];
 	t_map		map;
 	t_rc		rc;
 	t_player	player;
+	t_rc		rc;
 	t_rc		rc;
 }t_data;
 
