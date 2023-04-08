@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/08 18:54:08 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:22:18 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ typedef struct s_map
 typedef struct s_image
 {
 	char	*path_n;
-	void	*mlx_img;
-	int		*addr;
-	int		width;
-	int		height;
 	char	*path_s;
 	char	*path_w;
 	char	*path_e;
@@ -80,17 +76,6 @@ typedef struct s_image
 	int		color_c;
 	int		color_f;
 }t_image;
-
-typedef struct s_txturs
-{
-	void	*img;
-	int		*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		floor;
-	int		cell;
-}t_txturs;
 
 typedef struct s_player
 {
@@ -102,40 +87,14 @@ typedef struct s_player
 
 }t_player;
 
-typedef struct s_rc
-{
-	int		side;
-	int		hit;
-	int		draw_start;
-	int		draw_end;
-	int		txt_dir;
-	double	txt_width;
-	float	line_height;
-	double	perp_wall_dist;
-	double	camera_x;
-	double	raydir_x;
-	double	raydir_y;
-	double	v_dir_x;
-	double	v_dir_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	plan_x;
-	double	plan_y;
-	double	d_dist_x;
-	double	d_dist_y;
-}t_rc;
-
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	double		delta[2];
 	t_image		image;
-	t_txturs	img;
-	t_txturs	txt[4];
 	t_map		map;
 	t_player	player;
-	t_rc		rc;
 }t_data;
 
 // // ??
@@ -175,16 +134,10 @@ void	free_path(t_image img);
 void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
 
-////****************** GAME *******************////
-
-// render.c
-int		render(t_data *data);
-
 ////****************** INIT *******************////
 
 // init_mlx.c
 int		init_mlx(t_data *data);
-int		init_images(t_data *data);
 void	loop_hook(t_data data);
 
 // init_map.c
@@ -202,7 +155,6 @@ int		make_rgb(int r, int g, int b);
 // init_to_null.c
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
-void	init_rc_to_null(t_rc *rc);
 void	init_txturs_to_null(t_data *data);
 
 // init_txturs.c

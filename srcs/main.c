@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 15:51:52 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:21:32 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main(int ac, char **av)
 	if (init_mlx(&data))
 		return (free_all(&data), 3);
 	// print_tab(data.map.map);
-	loop_hook(data);
-	mlx_destroy_display(data.mlx_ptr);
-	ft_free(data.mlx_ptr);
+	// loop_hook(data);
+	// mlx_destroy_display(data.mlx_ptr);
+	// ft_free(data.mlx_ptr);
 	free_all(&data);
 	return (0);
 }
