@@ -6,7 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/08 20:33:00 by msharifi         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/08 18:54:08 by msharifi         ###   ########.fr       */
+>>>>>>> parent of 697c86b ([CLEAN] sans rc)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +110,7 @@ typedef struct s_rc
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	double	ray_angle;
 	
 =======
@@ -138,6 +143,8 @@ typedef struct s_rc
 
 typedef struct s_rc
 {
+=======
+>>>>>>> parent of 697c86b ([CLEAN] sans rc)
 	int		side;
 	int		hit;
 	int		draw_start;
@@ -167,13 +174,19 @@ typedef struct s_data
 	t_image		image;
 	t_txturs	img;
 	t_txturs	txt[4];
+<<<<<<< HEAD
 	t_txturs	img;
 	t_txturs	txt[4];
+=======
+>>>>>>> parent of 697c86b ([CLEAN] sans rc)
 	t_map		map;
 	t_rc		rc;
 	t_player	player;
 	t_rc		rc;
+<<<<<<< HEAD
 	t_rc		rc;
+=======
+>>>>>>> parent of 697c86b ([CLEAN] sans rc)
 }t_data;
 
 // // ??
