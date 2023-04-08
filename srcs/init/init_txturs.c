@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 18:25:54 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 18:51:18 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ int	init_textures(t_data *data)
 				return (1);
 		i++;
 	}
+	data->img.mlx_img = mlx_new_image(data->mlx_ptr, WIDTH_SCREEN, HEIGHT_SCREEN);
+	data->img.addr = (int *)mlx_get_data_addr(data->image.mlx_img , &data->img.bpp, &data->img.line_len, &data->img.endian);
 	return (0);
 }

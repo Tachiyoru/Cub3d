@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:46:41 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/05 16:52:04 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:28:55 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // int	check_textures_size(t_image img)
 // {
 // 	void	*img_ptr;
-// 	void	*mlx;
+// 	// void	*mlx;
 
-// 	mlx = mlx_init();
+// 	// mlx = mlx_init();
 // 	img_ptr = NULL;
 // 	if (sizing(mlx, img_ptr, img.path_n))
 // 		return (1);

@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 18:18:30 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 18:54:08 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_map
 typedef struct s_image
 {
 	char	*path_n;
+	void	*mlx_img;
+	int		*addr;
 	int		width;
 	int		height;
 	char	*path_s;
@@ -103,6 +105,13 @@ typedef struct s_player
 typedef struct s_rc
 {
 	int		side;
+	int		hit;
+	int		draw_start;
+	int		draw_end;
+	int		txt_dir;
+	double	txt_width;
+	float	line_height;
+	double	perp_wall_dist;
 	double	camera_x;
 	double	raydir_x;
 	double	raydir_y;
@@ -122,6 +131,7 @@ typedef struct s_data
 	void		*win_ptr;
 	double		delta[2];
 	t_image		image;
+	t_txturs	img;
 	t_txturs	txt[4];
 	t_map		map;
 	t_player	player;
@@ -164,6 +174,11 @@ void	free_lstmap(t_lst *lst_map);
 void	free_path(t_image img);
 void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
+
+////****************** GAME *******************////
+
+// render.c
+int		render(t_data *data);
 
 ////****************** INIT *******************////
 
@@ -222,7 +237,13 @@ int		check_wall(char **map);
 int		check_around(char **map, int y, int x);
 
 ////*************** RAYCASTING ****************////
+
+// init_rc.c
 int		init_rc(t_data *data);
+void	init_walls(t_data *data);
+void	draw_wall(t_data *data, int x0, int start_wall, int end_wall);
+void	draw(t_data *data, int x0, int start_wall, int end_wall);
+void	ray_pos(t_data *data);
 
 ////****************** UTILS ******************////
 

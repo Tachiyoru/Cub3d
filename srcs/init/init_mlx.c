@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 18:25:47 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 16:50:35 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	init_images(t_data *data)
 
 void	loop_hook(t_data data)
 {
-	// mlx_loop_hook(data.mlx_ptr, &init_rc, &data); // bonne vanne sa mere
+	mlx_loop_hook(data.mlx_ptr, &render, &data); // bonne vanne sa mere
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, ClientMessage, LeaveWindowMask,
 		&handle_btnrealease, &data);

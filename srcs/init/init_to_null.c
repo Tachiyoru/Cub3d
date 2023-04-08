@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/07 18:06:24 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 16:46:07 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	init_to_null_img(t_data *data)
 	data->image.path_n = NULL;
 	data->image.path_s = NULL;
 	data->image.path_w = NULL;
+	data->image.addr = NULL;
+	data->image.mlx_img = NULL;
 	data->image.path_e = NULL;
 	data->image.path_f = NULL;
 	data->image.path_c = NULL;
@@ -39,8 +41,12 @@ void	init_to_null_img(t_data *data)
 
 void	init_rc_to_null(t_rc *rc)
 {
+	rc->hit = 0;
 	rc->camera_x = 0;
+	rc->txt_dir = 0;
 	rc->d_dist_x = 0;
+	rc->perp_wall_dist = 0;
+	rc->line_height = 0;
 	rc->d_dist_y = 0;
 	rc->side = 0;
 	rc->plan_x = 0;

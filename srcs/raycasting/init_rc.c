@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:26:56 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/07 17:38:47 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/08 18:48:47 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,16 @@ int	init_rc(t_data *data)
 		// length of ray from one x or y-side to next x or y-side
 		data->rc.d_dist_x = sqrt(1 + (data->rc.raydir_y * data->rc.raydir_y) / (data->rc.raydir_x * data->rc.raydir_x));
 		data->rc.d_dist_y = sqrt(1 + (data->rc.raydir_x * data->rc.raydir_x) / (data->rc.raydir_y * data->rc.raydir_y));
-		double perpWallDist;
 		
 		// what direction to step in x or y-direction (either +1 or -1)
 		int step_x;
 		int step_y;
-		int hit = 0; // was there a wall hit?
-		int side; // was a NS or a EW wall hit?
 
 		// calculate step and initial sideDist
 		if (data->rc.raydir_x < 0)
 		{
 			step_x = -1;
-			side_dist_x = (data->player.pos_x- map_x) * data->rc.d_dist_x;
+			side_dist_x = (data->player.pos_x - map_x) * data->rc.d_dist_x;
 		}
 		else
 		{
@@ -66,7 +63,7 @@ int	init_rc(t_data *data)
 		if (data->rc.raydir_y < 0)
 		{
 			step_y = -1;
-			side_dist_y = (data->player.pos_y- map_y) * data->rc.d_dist_y;
+			side_dist_y = (data->player.pos_y - map_y) * data->rc.d_dist_y;
 		}
 		else
 		{
@@ -74,40 +71,40 @@ int	init_rc(t_data *data)
 			side_dist_y = (map_y + 1.0 - data->player.pos_y) * data->rc.d_dist_y;
 		}
 		// perform DDA
-		while (hit == 0)
+		while (data->rc.hit == 0)
 		{
 			// jump to next map square, either in x-direction, or in y-direction
 			if (side_dist_x < side_dist_y)
 			{
 			side_dist_x += data->rc.d_dist_x;
 			map_x += step_x;
-			side = 0;
+			data->rc.side = 0;
 			}
 			else
 			{
 			side_dist_y += data->rc.d_dist_y;
 			map_y += step_y;
-			side = 1;
+			data->rc.side = 1;
 			}
 			// Check if ray has hit a wall
 			if (data->map.map[map_x][map_y] == '1')
-				hit = 1;
+				data->rc.hit = 1;
 		}
 		// Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
-		if (side == 0)
-			perpWallDist = side_dist_x - data->rc.d_dist_x;
+		if (data->rc.side == 0)
+			data->rc.perp_wall_dist = side_dist_x - data->rc.d_dist_x;
 		else
-			perpWallDist = side_dist_y - data->rc.d_dist_y;
+			data->rc.perp_wall_dist = side_dist_y - data->rc.d_dist_y;
 		// Calculate height of line to draw on screen
-		int lineHeight = (int)(HEIGHT_SCREEN / perpWallDist);
+		data->rc.line_height = (int)(HEIGHT_SCREEN / data->rc.perp_wall_dist);
 
 		// Calculate lowest and highest pixel to fill in current stripe
-		int	drawStart = -lineHeight / 2 + HEIGHT_SCREEN / 2;
-		if (drawStart < 0)
-			drawStart = 0;
-		int	drawEnd = lineHeight / 2 + HEIGHT_SCREEN / 2;
-		if (drawEnd >= HEIGHT_SCREEN)
-			drawEnd = HEIGHT_SCREEN - 1;
+		data->rc.draw_start = - data->rc.line_height / 2 + HEIGHT_SCREEN / 2;
+		if (data->rc.draw_start < 0)
+			data->rc.draw_start = 0;
+		data->rc.draw_end = data->rc.line_height / 2 + HEIGHT_SCREEN / 2;
+		if (data->rc.draw_end >= HEIGHT_SCREEN)
+			data->rc.draw_end = HEIGHT_SCREEN - 1;
 		//choose wall color
 		int	color;
 		if (data->map.map[map_y][map_x] == '1')
@@ -118,54 +115,74 @@ int	init_rc(t_data *data)
 		// if (side == 1)
 		// 	color = color / 2;
 		//draw the pixels of the stripe as a vertical line
-		// draw(x, drawStart, drawEnd, color);
 	}
 	return (0);
 }
 
-// void	draw_wall(t_cub3d *cub3d, int x0, int start_wall, int end_wall) 
-// {
-// 	int	j;
+void	init_walls(t_data *data)
+{
+	if (data->rc.side == 0 && data->rc.raydir_x < 0)
+		data->rc.txt_dir = 0;
+	if (data->rc.side == 0 && data->rc.raydir_x >= 0)
+		data->rc.txt_dir = 1;
+	if (data->rc.side == 1 && data->rc.raydir_y < 0)
+		data->rc.txt_dir = 2;
+	if (data->rc.side == 1 && data->rc.raydir_y >= 0)
+		data->rc.txt_dir = 3;
+	if (data->rc.side == 0)
+		data->rc.txt_width = data->player.pos_y + data->rc.perp_wall_dist * data->rc.raydir_y;
+	else
+		data->rc.txt_width = data->player.pos_x + data->rc.perp_wall_dist * data->rc.raydir_x;
+	data->rc.txt_width -= floor(data->rc.txt_width);
+}
 
-// 	init_walls(cub3d);
-// 	j = start_wall;
-// 	cub3d->text.texx =(int)(cub3d->text.wallx * (float)IMG_WIDTH);
-// 	if (cub3d->ray.side == 0 && cub3d->ray.raydir_x > 0)
-// 		cub3d->text.texx = IMG_WIDTH - cub3d->text.texx - 1;
-// 	if (cub3d->ray.side == 1 && cub3d->ray.raydir_y < 0)
-// 		cub3d->text.texx = IMG_WIDTH - cub3d->text.texx - 1;
-// 	cub3d->text.step = 1.0 * IMG_LENGTH / cub3d->ray.lineheight;
+void	draw_wall(t_data *data, int x0, int start_wall, int end_wall) 
+{
+	int		j;
+	double	step;
+	double	txt_pos;
+	int		width_txt;
+	int		height_txt;
 
-// 	cub3d->text.texpos = (start_wall - cub3d->screen_height / 2 + cub3d->ray.lineheight / 2) * cub3d->text.step;
-// 	while (j < end_wall)
-// 	{
-// 		cub3d->text.texy = (int)cub3d->text.texpos & (IMG_LENGTH - 1);
-// 		cub3d->text.texpos += cub3d->text.step;
-// 		if (j < cub3d->screen_height && x0 < cub3d->screen_width)
-// 			cub3d->img.addr[j * cub3d->img.line_len / 4 + x0] = cub3d->texture[cub3d->text.texdir].addr[cub3d->text.texy * cub3d->texture[0].line_len / 4 + cub3d->text.texx];
-// 		j++;
-// 	}
-// }
+	init_walls(data);
+	j = start_wall;
+	width_txt =(int)(data->rc.txt_width * (float)WIDTH_IMG);
+	if (data->rc.side == 0 && data->rc.raydir_x > 0)
+		width_txt = WIDTH_IMG - width_txt - 1;
+	if (data->rc.side == 1 && data->rc.raydir_y < 0)
+		width_txt = WIDTH_IMG - width_txt - 1;
+	step = 1.0 * HEIGHT_IMG / data->rc.line_height;
 
-// void	draw(t_data *data, int x0, int start_wall, int end_wall) 
-// {
-// 	int	j;
+	txt_pos = (start_wall - HEIGHT_SCREEN / 2 + data->rc.line_height / 2) * step;
+	while (j < end_wall)
+	{
+		height_txt = (int)txt_pos & (HEIGHT_IMG - 1);
+		txt_pos += step;
+		if (j < HEIGHT_SCREEN && x0 < WIDTH_SCREEN)
+			data->image.addr[j * data->img.line_len / 4 + x0] = data->txt[data->rc.txt_dir].addr[height_txt * data->txt[0].line_len / 4 + width_txt];
+		j++;
+	}
+}
 
-// 	j = 0;
-// 	while (j < start_wall)
-// 	{
-// 		data->image.addr[j * data->image.line_len / 4 + x0] = data->image.floor;
-// 		j++;
-// 	}
-// 	// if (j <= end_wall)
-// 	// 	draw_wall(data, x0, start_wall, end_wall);
-// 	j = end_wall - 1;
-// 	while (j < data->screen_height)
-// 	{
-// 		data->image.addr[j * data->image.line_len / 4 + x0] = data->image.cell;
-// 		j++;
-// 	}
-// }
+void	draw(t_data *data, int x0, int start_wall, int end_wall) 
+{
+	int	j;
+
+	j = 0;
+	while (j < start_wall)
+	{
+		data->image.addr[j * data->img.line_len / 4 + x0] = data->txt->floor;
+		j++;
+	}
+	if (j <= end_wall)
+		draw_wall(data, x0, start_wall, end_wall);
+	j = end_wall - 1;
+	while (j < HEIGHT_SCREEN)
+	{
+		data->image.addr[j * data->img.line_len / 4 + x0] = data->txt->cell;
+		j++;
+	}
+}
 
 // void	init_player(t_data *data)
 // {
@@ -176,3 +193,20 @@ int	init_rc(t_data *data)
 // 	data->delta[0] = cos(data->player.angle) * 5;
 // 	data->delta[1] = sin(data->player.angle) * 5;
 // }
+
+void	ray_pos(t_data *data)
+{
+	int	x;
+
+	x = 0;
+	data->rc.hit = 0;
+	data->rc.perp_wall_dist = 0;
+	data->rc.line_height = 0;
+	while (x < WIDTH_SCREEN)
+	{
+		init_rc(data);
+		draw(data, x, data->rc.draw_start, data->rc.draw_end);
+		x++;
+	}
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.mlx_img, 0, 0);
+}
