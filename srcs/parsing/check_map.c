@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/08 20:42:18 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 13:16:22 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	check_map(t_data *data, char *file)
 		return (close(fd), 3);
 	close(fd);
 	if (init_rgb(data))
-		return (free_tab(data->map.map, 0), free_path(data->image),
+		return (free_tab(data->map.map, 0), free_path(data->path),
 			err_msg(RGB, NULL, 5));
 	if (check_wall(data->map.map))
-		return (free_tab(data->map.map, 0), free_path(data->image),
+		return (free_tab(data->map.map, 0), free_path(data->path),
 			err_msg(WALLS, NULL, 5));
 	return (0);
 }

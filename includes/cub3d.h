@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/08 21:19:07 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 12:20:56 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ enum	e_img
 	WALL_SOUTH,
 	WALL_WEST,
 	WALL_EAST,
-	IMAGE,
+	RENDU,
 	FLOOR_IMG,
 	CEILING_IMG,
 	MAX_IMG,
@@ -125,7 +125,7 @@ typedef struct s_data
 	double		delta[2];
 	double		player[MAX_POS];
 	t_image		img[MAX_IMG];
-	t_path		image;
+	t_path		path;
 	t_map		map;
 	t_rayon		rayon[SCREEN_WIDTH];
 }t_data;
@@ -135,7 +135,6 @@ typedef struct s_lst
 	char			*mapline;
 	struct s_lst	*next;
 }t_lst;
-
 
 void	print_lstmap(t_lst *lst);
 void	print_path(t_data *data);

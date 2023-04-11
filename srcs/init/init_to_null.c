@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/08 21:18:49 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 12:17:27 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_txturs_to_null(t_data *data)
 		data->img[i].addr = NULL;
 		data->img[i].bpp = 0;
 		data->img[i].endian = 0;
-		data->img[i].img= NULL;
+		data->img[i].img = NULL;
 		i++;
 	}
 }
@@ -36,20 +36,20 @@ void	init_to_null_data(t_data *data)
 	data->map.map = NULL;
 	data->map.size_x = 0;
 	data->map.size_y = 0;
-	data->image.color_c = 0;
-	data->image.color_f = 0;
+	data->path.color_c = 0;
+	data->path.color_f = 0;
 	init_to_null_img(data);
 	init_txturs_to_null(data);
 }
 
 void	init_to_null_img(t_data *data)
 {
-	data->image.path_n = NULL;
-	data->image.path_s = NULL;
-	data->image.path_w = NULL;
-	data->image.path_e = NULL;
-	data->image.path_f = NULL;
-	data->image.path_c = NULL;
+	data->path.path_n = NULL;
+	data->path.path_s = NULL;
+	data->path.path_w = NULL;
+	data->path.path_e = NULL;
+	data->path.path_f = NULL;
+	data->path.path_c = NULL;
 }
 
 // void	init_rc_to_null(t_rc *rc)
@@ -71,4 +71,3 @@ void	init_to_null_img(t_data *data)
 // 	rc->v_dir_x = 0;
 // 	rc->v_dir_y = 0;
 // }
-
