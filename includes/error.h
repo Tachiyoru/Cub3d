@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:52:16 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 16:47:17 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:55:28 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define INIT_IMG	"mlx_init_image failed"
 # define DATA_ADDR	"mlx_get_data_addr failed"
 # define IMG_SIZE	" : image of wrong size"
+# define MLX		"mlx_init failed"
+# define SCREEN		"Window size too big"
 
 
 #endif

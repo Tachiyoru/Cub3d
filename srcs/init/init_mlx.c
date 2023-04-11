@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 17:11:16 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:59:57 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,28 @@ int	init_player(t_data *data)
 	data->player[POS_PXL_Y] = data->player[POS_Y] * 64;
 	return (0);
 }
+// mlx_get_screen_size(cub3d->game.mlx, &cub3d->sizex, &cub3d->sizey);dans crete_window
+
+int	check_screen_size(t_data *data)
+{
+	int	width;
+	int	height;
+
+	mlx_get_screen_size(data->mlx_ptr, &width, &height);
+	if (width >= 2560 || height >= 1440)
+		return (err_msg(SCREEN, NULL, 1));
+	return (0);
+}
 
 int	init_mlx(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return (1);
+	if (check_screen_size(data))
+		return (2);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGTH,
-			"Shanuel");
+			"Mansha");
 	if (data->win_ptr == NULL)
 		return (2);
 	if (init_images(data))

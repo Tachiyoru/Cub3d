@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_rgb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:19:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 12:17:18 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 18:25:25 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	check_tab(char **tab)
 	i = -1;
 	while (tab[++i])
 	{
+		if (is_digit(tab[i]))
+			return (1);
 		if (ft_atoi(tab[i]) < 0 || ft_atoi(tab[i]) > 255)
 			return (1);
 		if (ft_strlen(tab[i]) > 3)

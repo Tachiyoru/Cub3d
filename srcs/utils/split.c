@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:58:42 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 16:00:37 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 18:26:43 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,6 @@ char	*ft_putword(char *str, char *tab, char set, int pos)
 	}
 	tab[k] = '\0';
 	return (tab);
-}
-
-void	*ft_memset(void *a, int i, size_t count)
-{
-	size_t			s;
-	unsigned char	*ptr;
-
-	s = 0;
-	ptr = (unsigned char *)a;
-	while (s < count)
-		ptr[s++] = (unsigned char)i;
-	return (a);
 }
 
 char	**ft_split(char	*str, char set)

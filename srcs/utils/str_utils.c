@@ -6,11 +6,23 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:53:25 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 19:20:14 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:30:18 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_digit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+		i++;
+	if (str[i])
+		return (1);
+	return (0);
+}
 
 int	ft_strlen(char *str)
 {
