@@ -6,12 +6,14 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 12:09:41 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 15:33:51 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 	// print_tab(data.map.map);
+
+// mlx_get_screen_size(cub3d->game.mlx, &cub3d->sizex, &cub3d->sizey);dans crete_window
 
 int	main(int ac, char **av)
 {

@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/08 20:42:18 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 14:33:06 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	free_path(t_path img)
 
 void	free_all(t_data *data)
 {
-	free_path(data->image);
+	free_path(data->path);
 	free_tab(data->map.map, 0);
 	destroy_all(data);
 }

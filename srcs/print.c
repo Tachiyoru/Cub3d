@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:44:02 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/05 19:08:38 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:14:40 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	print_path(t_data *data)
 {
-	printf("%s\n", data->image.path_n);
-	printf("%s\n", data->image.path_s);
-	printf("%s\n", data->image.path_w);
-	printf("%s\n", data->image.path_e);
-	printf("%s\n", data->image.path_f);
-	printf("%s\n", data->image.path_c);
+	printf("%s\n", data->path.path_n);
+	printf("%s\n", data->path.path_s);
+	printf("%s\n", data->path.path_w);
+	printf("%s\n", data->path.path_e);
+	printf("%s\n", data->path.path_f);
+	printf("%s\n", data->path.path_c);
 }
 
 void	print_lstmap(t_lst *lst)

@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 12:20:56 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 15:16:55 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 # define K_W			119
 # define K_S			115
 # define K_D			100
+
+# define Y 0
+# define X 1
 
 # define SCREEN_WIDTH	1000
 # define SCREEN_HEIGTH	600
@@ -112,11 +115,44 @@ typedef struct s_image
 
 typedef struct s_rayon
 {
-	float	dist;
-	double	angle;
-	int		type;
-	double	end_pos[2];
+	float		dist;
+	double		angle;
+	int			type;
 }t_rayon;
+
+typedef struct s_ray
+{
+	double		end_pos[2];
+	float		pos[2];
+	float		dir[2];
+	float		plan[2];
+	float		raydir[2];
+	float		cam_x;
+	int			map[2];
+	float		sidedist[2];
+	float		deltadist[2];
+	int			step[2];
+	int			hit;
+	int			side;
+	float		paperwalldist;
+	float		lineheight;
+	float		drawstart;
+	float		drawend;
+	int			x;
+	float		time;
+	float		movespeed;
+	float		rotspeed;
+}t_ray;
+
+typedef struct s_text
+{
+	int			texdir;
+	double		wallx;
+	int			texx;
+	int			texy;
+	double		step;
+	double		texpos;
+}	t_text;
 
 typedef struct s_data
 {
@@ -127,6 +163,8 @@ typedef struct s_data
 	t_image		img[MAX_IMG];
 	t_path		path;
 	t_map		map;
+	t_text		text;
+	t_ray		ray;
 	t_rayon		rayon[SCREEN_WIDTH];
 }t_data;
 
