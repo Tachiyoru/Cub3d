@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   init_txturs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 15:56:36 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 16:39:01 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	init_rendu(t_data *data)
+{
+	data->img[RENDU].img = mlx_new_image(data->mlx_ptr, SCREEN_WIDTH,
+			SCREEN_HEIGTH);
+	if (!data->img[RENDU].img)
+		return (err_msg(NULL, INIT_IMG, 1));
+	data->img[RENDU].addr = (int *)mlx_get_data_addr(data->img[RENDU].img,
+			&data->img[RENDU].bpp, &data->img[RENDU].line_len,
+			&data->img[RENDU].endian);
+	if (!data->img[RENDU].addr)
+		return (err_msg(NULL, DATA_ADDR, 2));
+	return (0);
+}
 
 int	init_images(t_data *data)
 {
@@ -33,14 +47,6 @@ int	init_images(t_data *data)
 		return (err_msg(data->path.path_e, XPM, 4));
 	return (0);
 }
-
-// data->img[IMAGE].img = mlx_xpm_file_to_image(data->mlx_ptr,
-	//data->image.path_n, &size, &size);
-// if (!data->img[IMAGE].img)
-// 	return (err_msg(data->image.path_n, XPM, 1));
-// data->img[IMAGE].addr = (int *)mlx_get_data_addr(data->img[IMAGE],
-	//&data->img[IMAGE].bpp, &data->img[IMAGE].line_len,
-	//&data->img[IMAGE].endian);
 
 int	init_textures(t_data *data)
 {

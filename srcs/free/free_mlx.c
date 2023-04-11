@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   free_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:40:30 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/08 20:37:43 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 17:07:04 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	destroy_images(t_data *data)
-// {
-// 	if (data->txt[0].img)
-// 		mlx_destroy_image(data->mlx_ptr, data->txt[0].img);
-// 	data->txt[0].img = NULL;
-// 	if (data->txt[1].img)
-// 		mlx_destroy_image(data->mlx_ptr, data->txt[1].img);
-// 	data->txt[1].img = NULL;
-// 	if (data->txt[2].img)
-// 		mlx_destroy_image(data->mlx_ptr, data->txt[2].img);
-// 	data->txt[2].img = NULL;
-// 	if (data->txt[3].img)
-// 		mlx_destroy_image(data->mlx_ptr, data->txt[3].img);
-// 	data->txt[3].img = NULL;
-// }
+void	destroy_images(t_data *data)
+{
+	if (data->img[WALL_NORTH].img)
+		mlx_destroy_image(data->mlx_ptr, data->img[WALL_NORTH].img);
+	data->img[WALL_NORTH].img = NULL;
+	if (data->img[WALL_SOUTH].img)
+		mlx_destroy_image(data->mlx_ptr, data->img[WALL_SOUTH].img);
+	data->img[WALL_SOUTH].img = NULL;
+	if (data->img[WALL_WEST].img)
+		mlx_destroy_image(data->mlx_ptr, data->img[WALL_WEST].img);
+	data->img[WALL_WEST].img = NULL;
+	if (data->img[WALL_EAST].img)
+		mlx_destroy_image(data->mlx_ptr, data->img[WALL_EAST].img);
+	data->img[WALL_EAST].img = NULL;
+}
 
 int	destroy_all(t_data *data)
 {

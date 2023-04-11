@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_to_null.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 16:26:26 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 16:40:50 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,23 +51,3 @@ void	init_to_null_img(t_data *data)
 	data->path.path_f = NULL;
 	data->path.path_c = NULL;
 }
-
-// void	init_rc_to_null(t_rc *rc)
-// {
-// 	rc->hit = 0;
-// 	rc->camera_x = 0;
-// 	rc->txt_dir = 0;
-// 	rc->d_dist_x = 0;
-// 	rc->perp_wall_dist = 0;
-// 	rc->line_height = 0;
-// 	rc->d_dist_y = 0;
-// 	rc->side = 0;
-// 	rc->plan_x = 0;
-// 	rc->plan_y = 0;
-// 	rc->raydir_x = 0;
-// 	rc->raydir_y = 0;
-// 	rc->side_dist_x = 0;
-// 	rc->side_dist_y = 0;
-// 	rc->v_dir_x = 0;
-// 	rc->v_dir_y = 0;
-// }

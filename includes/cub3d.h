@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 16:28:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:13:41 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@
 
 # define SCREEN_WIDTH	1000
 # define SCREEN_HEIGTH	600
-# define IMG_SIZE		64
 # define M_PI			3.14159265358979323846
 
 enum	e_player
@@ -61,8 +60,6 @@ enum	e_img
 	WALL_WEST,
 	WALL_EAST,
 	RENDU,
-	FLOOR_IMG,
-	CEILING_IMG,
 	MAX_IMG,
 };
 
@@ -113,16 +110,8 @@ typedef struct s_image
 	int		height;
 }t_image;
 
-typedef struct s_rayon
-{
-	float		dist;
-	double		angle;
-	int			type;
-}t_rayon;
-
 typedef struct s_ray
 {
-	double		end_pos[2];
 	float		pos[2];
 	float		dir[2];
 	float		plan[2];
@@ -138,10 +127,6 @@ typedef struct s_ray
 	float		lineheight;
 	float		drawstart;
 	float		drawend;
-	int			x;
-	float		time;
-	float		movespeed;
-	float		rotspeed;
 }t_ray;
 
 typedef struct s_text
@@ -158,14 +143,12 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	double		delta[2];
 	double		player[MAX_POS];
 	t_image		img[MAX_IMG];
 	t_path		path;
 	t_map		map;
 	t_text		text;
 	t_ray		ray;
-	t_rayon		rayon[SCREEN_WIDTH];
 }t_data;
 
 typedef struct s_lst
@@ -173,10 +156,6 @@ typedef struct s_lst
 	char			*mapline;
 	struct s_lst	*next;
 }t_lst;
-
-void	print_lstmap(t_lst *lst);
-void	print_path(t_data *data);
-void	print_tab(char **tab);
 
 /****************************************************/
 /*						FCTS						*/
@@ -190,6 +169,7 @@ int		err_msg(char *s1, char *s2, int ret_val);
 ////****************** FREE *******************////
 
 // free_mlx.c
+void	destroy_images(t_data *data);
 int		destroy_all(t_data *data);
 
 // free.c
@@ -200,14 +180,20 @@ void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
 ////****************** GAME *******************////
 
+// raycasting.c
+void	raycasting(t_data *data);
+void	cam_pos(t_ray *ray, int screen_width, int x);
+void	ray_dist(t_ray *ray);
+void	dda_algo(t_ray *ray, t_map *map);
+void	wall_lenght(t_ray *ray, int screen_height);
+
+// render.c
 int		render(t_data *data);
+void	print_background(t_data *data);
+void	init_walls(t_ray *ray, t_text *text);
+void	draw_wall(t_data *data, int x0, t_ray *ray, t_text *text);
 
 ////****************** INIT *******************////
-
-// init_mlx.c
-int		init_mlx(t_data *data);
-int		init_images(t_data *data);
-void	loop_hook(t_data data);
 
 // init_map.c
 int		init_map(t_data *data, int fd);
@@ -216,16 +202,24 @@ int		store_path(t_data *data, t_lst *maplst, int a);
 int		store_path_2(t_data *data, t_lst *maplst, int a);
 int		check_path(t_data *data);
 
+// init_mlx.c
+int		init_player(t_data *data);
+int		init_mlx(t_data *data);
+void	loop_hook(t_data data);
+
 // init_rgb.c
 int		init_rgb(t_data *data);
 int		check_tab(char **tab);
 int		make_rgb(int r, int g, int b);
 
 // init_to_null.c
+void	init_txturs_to_null(t_data *data);
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
 
 // init_txturs.c
+int		init_rendu(t_data *data);
+int		init_images(t_data *data);
 int		init_textures(t_data *data);
 
 ////***************** KEYPRESS ****************////
@@ -236,27 +230,30 @@ int		handle_btnrealease(t_data *data);
 
 ////***************** PARSING *****************////
 
-//check_map.c
-int		check_map(t_data *data, char *file);
+// check_ext.c
 int		check_ext(char *file, char *str);
 int		check_open(t_path img);
 void	close_txtures(int *fd);
+
+// check_map.c
+int		check_map(t_data *data, char *file);
+int		check_wall(char **map);
 char	**create_copy_map(char **map);
+
+// check_txturs.c
+int		check_textures_size(t_path img);
+int		sizing(void *mlx, void *img_ptr, char *path);
 
 // data_map.c
 int		store_map_data(t_data *data, t_lst *tmp_map);
 int		verif_data(char **map);
+int		verif_char(t_lst *check);
 
 // parsing_map.c
 int		is_player(t_data *data, char **map);
-void	set_value(t_data *data, char c, int i, int j);
 int		return_is_player(int p);
-int		verif_char(t_lst *check);
-int		check_wall(char **map);
+void	set_value(t_data *data, char c, int i, int j);
 int		check_around(char **map, int y, int x);
-
-////*************** RAYCASTING ****************////
-int		init_rc(t_data *data);
 
 ////****************** UTILS ******************////
 

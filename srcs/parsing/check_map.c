@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 16:26:29 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 17:01:46 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,63 +26,35 @@ int	check_map(t_data *data, char *file)
 	close(fd);
 	if (init_rgb(data))
 		return (free_tab(data->map.map, 0), free_path(data->path),
-			err_msg(RGB, NULL, 5));
+			err_msg(RGB, NULL, 4));
+	if (check_open(data->path))
+		return (free_tab(data->map.map, 0), free_path(data->path), 5);
 	if (check_wall(data->map.map))
 		return (free_tab(data->map.map, 0), free_path(data->path),
-			err_msg(WALLS, NULL, 5));
-	return (0);
-}
-	//check_open(data->image)
-
-/**
- * @brief
- *
- * @param file
- * @return int
- */
-int	check_ext(char *file, char *str)
-{
-	int	size;
-
-	size = ft_strlen(file);
-	if (file[size - 4] != str[0] || file[size - 3] != str[1]
-		|| file[size - 2] != str[2] || file[size - 1] != str[3])
-		return (1);
+			err_msg(WALLS, NULL, 6));
 	return (0);
 }
 
-int	check_open(t_path img)
+// Return 0 si la map est entouree de 1 sinon 0
+int	check_wall(char **map)
 {
-	int		fd[4];
+	int	x;
+	int	y;
 
-	if (check_ext(img.path_n, ".xpm"))
-		return (err_msg("North", NOT_XPM, 1));
-	else if (check_ext(img.path_s, ".xpm"))
-		return (err_msg("South", NOT_XPM, 1));
-	else if (check_ext(img.path_w, ".xpm"))
-		return (err_msg("West", NOT_XPM, 1));
-	else if (check_ext(img.path_e, ".xpm"))
-		return (err_msg("East", NOT_XPM, 1));
-	fd[0] = open(img.path_n, O_RDONLY);
-	fd[1] = open(img.path_s, O_RDONLY);
-	fd[2] = open(img.path_w, O_RDONLY);
-	fd[3] = open(img.path_e, O_RDONLY);
-	if (fd[0] == -1 || fd[1] == -1 || fd[2] == -1 || fd[3] == -1)
-		return (close_txtures(fd), err_msg(OPEN_TXTUR, NULL, 1));
-	close_txtures(fd);
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '0')
+				if (check_around(map, y, x))
+					return (1);
+			x++;
+		}
+		y++;
+	}
 	return (0);
-}
-
-void	close_txtures(int *fd)
-{
-	if (fd[0] != -1)
-		close(fd[0]);
-	if (fd[1] != -1)
-		close(fd[1]);
-	if (fd[2] != -1)
-		close(fd[2]);
-	if (fd[3] != -1)
-		close(fd[3]);
 }
 
 char	**create_copy_map(char **map)

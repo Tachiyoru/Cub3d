@@ -14,10 +14,10 @@ MLX			=	./mlx
 vpath %.c $(foreach dir, $(SRC_DIR), $(dir):)
 
 SRCS		=	main.c					\
-				print.c					\
 				error_msg.c				\
 				free_mlx.c				\
 				free.c					\
+				raycasting.c			\
 				render.c				\
 				get_next_line.c			\
 				get_next_line_utils.c	\
@@ -27,7 +27,9 @@ SRCS		=	main.c					\
 				init_to_null.c			\
 				init_txturs.c			\
 				keypress.c				\
+				check_ext.c				\
 				check_map.c				\
+				check_txturs.c			\
 				data_map.c				\
 				parsing_map.c			\
 				alloc.c					\

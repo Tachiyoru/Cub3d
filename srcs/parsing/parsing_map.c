@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 16:26:42 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 17:01:09 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,51 +81,6 @@ int	return_is_player(int p)
 		return (err_msg(NO_PLAYER, NULL, 1));
 	else if (p > 1)
 		return (err_msg(TOO_PLAYER, NULL, 1));
-	return (0);
-}
-
-int	verif_char(t_lst *check)
-{
-	int	i;
-
-	while (check)
-	{
-		i = 0;
-		while (check->mapline[i])
-		{
-			if (check->mapline[i] == ' ' || check->mapline[i] == '0'
-				|| check->mapline[i] == '1' || check->mapline[i] == '\n')
-				i++;
-			else if (check->mapline[i] == 'N' || check->mapline[i] == 'S'
-				|| check->mapline[i] == 'W' || check->mapline[i] == 'E')
-				i++;
-			else
-				return (1);
-		}
-		check = check->next;
-	}
-	return (0);
-}
-
-// Return 0 si la map est entouree de 1 sinon 0
-int	check_wall(char **map)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == '0')
-				if (check_around(map, y, x))
-					return (1);
-			x++;
-		}
-		y++;
-	}
 	return (0);
 }
 

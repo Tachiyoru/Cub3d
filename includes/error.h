@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:52:16 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 15:38:07 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 16:47:17 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define TOO_PLAYER	"Too many players in map"
 # define INIT_IMG	"mlx_init_image failed"
 # define DATA_ADDR	"mlx_get_data_addr failed"
+# define IMG_SIZE	" : image of wrong size"
 
 
 #endif

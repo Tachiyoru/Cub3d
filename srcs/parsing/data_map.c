@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/08 19:28:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:01:50 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,29 @@ int	verif_data(char **map)
 			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
 				return (1);
 		}
+	}
+	return (0);
+}
+
+int	verif_char(t_lst *check)
+{
+	int	i;
+
+	while (check)
+	{
+		i = 0;
+		while (check->mapline[i])
+		{
+			if (check->mapline[i] == ' ' || check->mapline[i] == '0'
+				|| check->mapline[i] == '1' || check->mapline[i] == '\n')
+				i++;
+			else if (check->mapline[i] == 'N' || check->mapline[i] == 'S'
+				|| check->mapline[i] == 'W' || check->mapline[i] == 'E')
+				i++;
+			else
+				return (1);
+		}
+		check = check->next;
 	}
 	return (0);
 }
