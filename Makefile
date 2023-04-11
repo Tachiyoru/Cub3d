@@ -30,7 +30,6 @@ SRCS		=	main.c					\
 				check_map.c				\
 				data_map.c				\
 				parsing_map.c			\
-				raycasting.c			\
 				alloc.c					\
 				lst_utils.c				\
 				split.c					\
