@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 14:28:21 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:28:39 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@
 # include <math.h>
 # include <X11/X.h>
 
-# define PI				3.1415926535
-# define DR				0.0174533
-# define WIDTH_IMG		64
-# define HEIGHT_IMG		64
-# define WIDTH_SCREEN	1000
-# define HEIGHT_SCREEN	600
 # define K_ESC			65307
 # define K_UP			65362
 # define K_DOWN			65364
@@ -41,6 +35,36 @@
 # define K_W			119
 # define K_S			115
 # define K_D			100
+
+# define Y 0
+# define X 1
+
+# define SCREEN_WIDTH	1000
+# define SCREEN_HEIGTH	600
+# define IMG_SIZE		64
+# define M_PI			3.14159265358979323846
+
+enum	e_player
+{
+	POS_Y,
+	POS_X,
+	POS_PXL_X,
+	POS_PXL_Y,
+	ANGLE,
+	MAX_POS,
+};
+
+enum	e_img
+{
+	WALL_NORTH,
+	WALL_SOUTH,
+	WALL_WEST,
+	WALL_EAST,
+	RENDU,
+	FLOOR_IMG,
+	CEILING_IMG,
+	MAX_IMG,
+};
 
 /****************************/
 /*			 GNL			*/
@@ -66,7 +90,7 @@ typedef struct s_map
 	char	**map;
 }t_map;
 
-typedef struct s_image
+typedef struct s_path
 {
 	char	*path_n;
 	char	*path_s;
@@ -76,39 +100,73 @@ typedef struct s_image
 	char	*path_c;
 	int		color_c;
 	int		color_f;
+}t_path;
+
+typedef struct s_image
+{
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
 }t_image;
 
-typedef struct s_player
+typedef struct s_rayon
 {
-	double	pos_x;
-	double	pos_y;
-	double	pixel_x;
-	double	pixel_y;
-	double	angle;
+	float		dist;
+	double		angle;
+	int			type;
+}t_rayon;
 
-}t_player;
-
-typedef struct s_rc
+typedef struct s_ray
 {
-	double	ray_angle;
-	
-}t_rc;
+	double		end_pos[2];
+	float		pos[2];
+	float		dir[2];
+	float		plan[2];
+	float		raydir[2];
+	float		cam_x;
+	int			map[2];
+	float		sidedist[2];
+	float		deltadist[2];
+	int			step[2];
+	int			hit;
+	int			side;
+	float		paperwalldist;
+	float		lineheight;
+	float		drawstart;
+	float		drawend;
+	int			x;
+	float		time;
+	float		movespeed;
+	float		rotspeed;
+}t_ray;
+
+typedef struct s_text
+{
+	int			texdir;
+	double		wallx;
+	int			texx;
+	int			texy;
+	double		step;
+	double		texpos;
+}	t_text;
 
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	double		delta[2];
-	t_image		image;
+	double		player[MAX_POS];
+	t_image		img[MAX_IMG];
+	t_path		path;
 	t_map		map;
-	t_rc		rc;
-	t_player	player;
+	t_text		text;
+	t_ray		ray;
+	t_rayon		rayon[SCREEN_WIDTH];
 }t_data;
-
-// // ??
-// int		stepX;
-// int		stepY;
-
 
 typedef struct s_lst
 {
@@ -132,20 +190,23 @@ int		err_msg(char *s1, char *s2, int ret_val);
 ////****************** FREE *******************////
 
 // free_mlx.c
-void	destroy_images(t_data *data);
 int		destroy_all(t_data *data);
 
 // free.c
 void	ft_free(void *addr);
 void	free_lstmap(t_lst *lst_map);
-void	free_path(t_image img);
+void	free_path(t_path img);
 void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
+////****************** GAME *******************////
+
+int		render(t_data *data);
 
 ////****************** INIT *******************////
 
 // init_mlx.c
 int		init_mlx(t_data *data);
+int		init_images(t_data *data);
 void	loop_hook(t_data data);
 
 // init_map.c
@@ -163,11 +224,9 @@ int		make_rgb(int r, int g, int b);
 // init_to_null.c
 void	init_to_null_data(t_data *data);
 void	init_to_null_img(t_data *data);
-void	init_txturs_to_null(t_data *data);
 
 // init_txturs.c
 int		init_textures(t_data *data);
-
 
 ////***************** KEYPRESS ****************////
 
@@ -180,7 +239,7 @@ int		handle_btnrealease(t_data *data);
 //check_map.c
 int		check_map(t_data *data, char *file);
 int		check_ext(char *file, char *str);
-int		check_open(t_image img);
+int		check_open(t_path img);
 void	close_txtures(int *fd);
 char	**create_copy_map(char **map);
 
@@ -197,13 +256,7 @@ int		check_wall(char **map);
 int		check_around(char **map, int y, int x);
 
 ////*************** RAYCASTING ****************////
-
-// init_rc.c
 int		init_rc(t_data *data);
-void	init_walls(t_data *data);
-void	draw_wall(t_data *data, int x0, int start_wall, int end_wall);
-void	draw(t_data *data, int x0, int start_wall, int end_wall);
-void	ray_pos(t_data *data);
 
 ////****************** UTILS ******************////
 

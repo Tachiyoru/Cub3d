@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/08 19:34:11 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:26:42 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	is_player(t_data *data, char **map)
 			{
 				p++;
 				set_value(data, map[i][j], i, j);
+				data->map.map[i][j] = '0';
 			}
 		}
 	}
@@ -39,17 +40,39 @@ int	is_player(t_data *data, char **map)
 void	set_value(t_data *data, char c, int i, int j)
 {
 	if (c == 'N')
-		data->player.angle = PI / 2;
+	{
+		data->ray.dir[X] = 0;
+		data->ray.dir[Y] = -1;
+		data->ray.plan[X] = 0.66;
+		data->ray.plan[Y] = 0;
+		data->player[ANGLE] = M_PI / 2;
+	}
 	else if (c == 'S')
-		data->player.angle = 1.5 * PI;
+	{
+		data->ray.dir[X] = 0;
+		data->ray.dir[Y] = 1;
+		data->ray.plan[X] = -0.66;
+		data->ray.plan[Y] = 0;
+		data->player[ANGLE] = 1.5 * M_PI;
+	}
 	else if (c == 'E')
-		data->player.angle = PI * 2;
+	{
+		data->ray.dir[X] = 1;
+		data->ray.dir[Y] = 0;
+		data->ray.plan[X] = 0;
+		data->ray.plan[Y] = 0.66;
+		data->player[ANGLE] = M_PI;
+	}
 	else if (c == 'W')
-		data->player.angle = 0;
-	data->rc.ray_angle = data->player.angle;
-	data->map.map[i][j] = '0';
-	data->player.pos_y = i;
-	data->player.pos_x = j;
+	{
+		data->ray.dir[X] = -1;
+		data->ray.dir[Y] = 0;
+		data->ray.plan[X] = 0;
+		data->ray.plan[Y] = -0.66;
+		data->player[ANGLE] = 0;
+	}
+	data->player[POS_Y] = i;
+	data->player[POS_X] = j;
 }
 
 int	return_is_player(int p)

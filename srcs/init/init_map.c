@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:06:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/08 19:28:35 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:26:18 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,21 @@ int	store_path(t_data *data, t_lst *maplst, int a)
 		return (1);
 	if (ft_strncmp(maplst->mapline, "NO", 2))
 	{
-		if (data->image.path_n)
+		if (data->path.path_n)
 			return (2);
-		data->image.path_n = ft_strndup((maplst->mapline + 3), (a - 4));
+		data->path.path_n = ft_strndup((maplst->mapline + 3), (a - 4));
 	}
 	else if (ft_strncmp(maplst->mapline, "SO", 2))
 	{
-		if (data->image.path_s)
+		if (data->path.path_s)
 			return (2);
-		data->image.path_s = ft_strndup(maplst->mapline + 3, (a - 4));
+		data->path.path_s = ft_strndup(maplst->mapline + 3, (a - 4));
 	}
 	else if (ft_strncmp(maplst->mapline, "WE", 2))
 	{
-		if (data->image.path_w)
+		if (data->path.path_w)
 			return (2);
-		data->image.path_w = ft_strndup(maplst->mapline + 3, (a - 4));
+		data->path.path_w = ft_strndup(maplst->mapline + 3, (a - 4));
 	}
 	else
 		return (store_path_2(data, maplst, a));
@@ -93,21 +93,21 @@ int	store_path_2(t_data *data, t_lst *maplst, int a)
 {
 	if (ft_strncmp(maplst->mapline, "EA", 2))
 	{
-		if (data->image.path_e)
+		if (data->path.path_e)
 			return (2);
-		data->image.path_e = ft_strndup(maplst->mapline + 3, (a - 4));
+		data->path.path_e = ft_strndup(maplst->mapline + 3, (a - 4));
 	}
 	else if (maplst->mapline[0] == 'F')
 	{
-		if (data->image.path_f)
+		if (data->path.path_f)
 			return (2);
-		data->image.path_f = ft_strndup(maplst->mapline + 2, (a - 3));
+		data->path.path_f = ft_strndup(maplst->mapline + 2, (a - 3));
 	}
 	else if (maplst->mapline[0] == 'C')
 	{
-		if (data->image.path_c)
+		if (data->path.path_c)
 			return (2);
-		data->image.path_c = ft_strndup(maplst->mapline + 2, (a - 3));
+		data->path.path_c = ft_strndup(maplst->mapline + 2, (a - 3));
 	}
 	else if (maplst->mapline[0] != '\n')
 		return (3);
@@ -116,17 +116,17 @@ int	store_path_2(t_data *data, t_lst *maplst, int a)
 
 int	check_path(t_data *data)
 {
-	if (data->image.path_n == NULL)
+	if (data->path.path_n == NULL)
 		return (1);
-	else if (data->image.path_s == NULL)
+	else if (data->path.path_s == NULL)
 		return (1);
-	else if (data->image.path_w == NULL)
+	else if (data->path.path_w == NULL)
 		return (1);
-	else if (data->image.path_e == NULL)
+	else if (data->path.path_e == NULL)
 		return (1);
-	else if (data->image.path_f == NULL)
+	else if (data->path.path_f == NULL)
 		return (1);
-	else if (data->image.path_c == NULL)
+	else if (data->path.path_c == NULL)
 		return (1);
 	return (0);
 }

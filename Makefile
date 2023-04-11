@@ -18,12 +18,14 @@ SRCS		=	main.c					\
 				error_msg.c				\
 				free_mlx.c				\
 				free.c					\
+				render.c				\
 				get_next_line.c			\
 				get_next_line_utils.c	\
 				init_mlx.c				\
 				init_map.c				\
 				init_rgb.c				\
 				init_to_null.c			\
+				init_txturs.c			\
 				keypress.c				\
 				check_map.c				\
 				data_map.c				\
