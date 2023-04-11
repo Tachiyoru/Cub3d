@@ -6,21 +6,19 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 18:59:57 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:02:54 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	init_player(t_data *data)
+void	init_player(t_data *data)
 {
 	data->player[POS_X] += 0.5;
 	data->player[POS_Y] += 0.5;
 	data->player[POS_PXL_X] = data->player[POS_X] * 64;
 	data->player[POS_PXL_Y] = data->player[POS_Y] * 64;
-	return (0);
 }
-// mlx_get_screen_size(cub3d->game.mlx, &cub3d->sizex, &cub3d->sizey);dans crete_window
 
 int	check_screen_size(t_data *data)
 {
@@ -28,7 +26,7 @@ int	check_screen_size(t_data *data)
 	int	height;
 
 	mlx_get_screen_size(data->mlx_ptr, &width, &height);
-	if (width >= 2560 || height >= 1440)
+	if (SCREEN_WIDTH > width || SCREEN_HEIGHT > height)
 		return (err_msg(SCREEN, NULL, 1));
 	return (0);
 }
@@ -40,7 +38,7 @@ int	init_mlx(t_data *data)
 		return (1);
 	if (check_screen_size(data))
 		return (2);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGTH,
+	data->win_ptr = mlx_new_window(data->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"Mansha");
 	if (data->win_ptr == NULL)
 		return (2);
@@ -49,9 +47,8 @@ int	init_mlx(t_data *data)
 	if (init_textures(data))
 		return (4);
 	if (init_rendu(data))
-		return (0);
-	if (init_player(data))
-		return (0);
+		return (5);
+	init_player(data);
 	data->ray.pos[X] = (double)data->player[POS_X];
 	data->ray.pos[Y] = (double)data->player[POS_Y];
 	return (0);

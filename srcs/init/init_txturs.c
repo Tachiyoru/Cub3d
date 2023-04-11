@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 16:39:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:00:25 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	init_rendu(t_data *data)
 {
 	data->img[RENDU].img = mlx_new_image(data->mlx_ptr, SCREEN_WIDTH,
-			SCREEN_HEIGTH);
+			SCREEN_HEIGHT);
 	if (!data->img[RENDU].img)
 		return (err_msg(NULL, INIT_IMG, 1));
 	data->img[RENDU].addr = (int *)mlx_get_data_addr(data->img[RENDU].img,

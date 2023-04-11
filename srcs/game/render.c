@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 17:17:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:00:25 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_background(t_data *data)
 	int	i;
 
 	j = 0;
-	while (j < SCREEN_HEIGTH / 2)
+	while (j < SCREEN_HEIGHT / 2)
 	{
 		i = -1;
 		while (++i < SCREEN_WIDTH)
@@ -35,7 +35,7 @@ void	print_background(t_data *data)
 				= data->path.color_c;
 		j++;
 	}
-	while (j < SCREEN_HEIGTH)
+	while (j < SCREEN_HEIGHT)
 	{
 		i = -1;
 		while (++i < SCREEN_WIDTH)
@@ -74,13 +74,13 @@ void	draw_wall(t_data *data, int x0, t_ray *ray, t_text *text)
 	if (ray->side == 1 && ray->raydir[Y] < 0)
 		text->texx = data->img[text->texdir].width - text->texx - 1;
 	text->step = 1.0 * data->img[text->texdir].height / ray->lineheight;
-	text->texpos = (ray->drawstart - SCREEN_HEIGTH / 2 + \
+	text->texpos = (ray->drawstart - SCREEN_HEIGHT / 2 + \
 		ray->lineheight / 2) * text->step;
 	while (j <= ray->drawend)
 	{
 		text->texy = (int)text->texpos & (data->img[text->texdir].height - 1);
 		text->texpos += text->step;
-		if (j < SCREEN_HEIGTH && x0 < SCREEN_WIDTH)
+		if (j < SCREEN_HEIGHT && x0 < SCREEN_WIDTH)
 			data->img[RENDU].addr[j * data->img[RENDU].line_len / 4 + x0]
 				= data->img[text->texdir].addr[text->texy
 				* data->img[text->texdir].line_len / 4 + text->texx];

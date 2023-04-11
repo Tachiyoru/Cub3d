@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 19:00:15 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:03:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define X 1
 
 # define SCREEN_WIDTH	1000
-# define SCREEN_HEIGTH	600
+# define SCREEN_HEIGHT	600
 # define M_PI			3.14159265358979323846
 
 enum	e_player
@@ -203,7 +203,7 @@ int		store_path_2(t_data *data, t_lst *maplst, int a);
 int		check_path(t_data *data);
 
 // init_mlx.c
-int		init_player(t_data *data);
+void	init_player(t_data *data);
 int		check_screen_size(t_data *data);
 int		init_mlx(t_data *data);
 void	loop_hook(t_data data);
@@ -273,13 +273,14 @@ char	*ft_putword(char *str, char *tab, char set, int pos);
 char	**ft_split(char	*str, char set);
 
 // str_utils.c
-int		is_digit(char *str);
 int		ft_strlen(char *str);
+char	*ft_strtrim(char *str, char c);
 char	*ft_strndup(char *str, int n);
 int		ft_strncmp(char *str, char *to_find, int n);
 int		ft_strchr2(char *str, char c);
 
 // utils.c
 long	ft_atoi(char *str);
+int		is_digit(char *str);
 
 #endif

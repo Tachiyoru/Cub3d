@@ -6,13 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 18:47:49 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:06:24 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// espaces avant et apres element de map
 
 // mlx_get_screen_size(cub3d->game.mlx, &cub3d->sizex, &cub3d->sizey);dans crete_window
 
@@ -28,6 +26,7 @@ int	main(int ac, char **av)
 	if (init_mlx(&data))
 		return (free_all(&data), 3);
 	loop_hook(data);
+	(void)av;
 	free_all(&data);
 	return (0);
 }

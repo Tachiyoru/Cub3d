@@ -6,23 +6,11 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:53:25 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 18:30:18 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:58:30 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	is_digit(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
-		i++;
-	if (str[i])
-		return (1);
-	return (0);
-}
 
 int	ft_strlen(char *str)
 {
@@ -34,6 +22,32 @@ int	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+// Free str
+// Retourne la chaine de caractere sans le ou les plusieurs cacaracteres c
+// au debut et a la fin de str ou NULL en cas d'echec
+char	*ft_strtrim(char *str, char c)
+{
+	int		i;
+	int		j;
+	char	*res;
+
+	i = 0;
+	while (str[i] == c)
+		i++;
+	j = ft_strlen(str) - 1;
+	if (j <= 0)
+		return (ft_free(str), NULL);
+	while (str[j] == c)
+		j--;
+	if (i > j)
+		return (ft_free(str), NULL);
+	res = ft_strndup(str + i, j - i + 1);
+	if (!res)
+		return (ft_free(str), NULL);
+	ft_free(str);
+	return (res);
 }
 
 // Duplique n caratcere de str

@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 17:04:28 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:00:25 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	raycasting(t_data *data)
 		cam_pos(&data->ray, SCREEN_WIDTH, x);
 		ray_dist(&data->ray);
 		dda_algo(&data->ray, &data->map);
-		wall_lenght(&data->ray, SCREEN_HEIGTH);
+		wall_lenght(&data->ray, SCREEN_HEIGHT);
 		draw_wall(data, x, &data->ray, &data->text);
 		x++;
 	}

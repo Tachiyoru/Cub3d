@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:06:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 18:45:39 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:04:46 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,21 @@ int	store_path(t_data *data, t_lst *maplst, int a)
 		if (data->path.path_n)
 			return (2);
 		data->path.path_n = ft_strndup((maplst->mapline + 3), (a - 4));
+		data->path.path_n = ft_strtrim(data->path.path_n, ' ');
 	}
 	else if (ft_strncmp(maplst->mapline, "SO", 2))
 	{
 		if (data->path.path_s)
 			return (2);
 		data->path.path_s = ft_strndup(maplst->mapline + 3, (a - 4));
+		data->path.path_s = ft_strtrim(data->path.path_s, ' ');
 	}
 	else if (ft_strncmp(maplst->mapline, "WE", 2))
 	{
 		if (data->path.path_w)
 			return (2);
 		data->path.path_w = ft_strndup(maplst->mapline + 3, (a - 4));
+		data->path.path_w = ft_strtrim(data->path.path_w, ' ');
 	}
 	else
 		return (store_path_2(data, maplst, a));
@@ -96,18 +99,21 @@ int	store_path_2(t_data *data, t_lst *maplst, int a)
 		if (data->path.path_e)
 			return (2);
 		data->path.path_e = ft_strndup(maplst->mapline + 3, (a - 4));
+		data->path.path_e = ft_strtrim(data->path.path_e, ' ');
 	}
 	else if (maplst->mapline[0] == 'F')
 	{
 		if (data->path.path_f)
 			return (2);
 		data->path.path_f = ft_strndup(maplst->mapline + 2, (a - 3));
+		data->path.path_f = ft_strtrim(data->path.path_f, ' ');
 	}
 	else if (maplst->mapline[0] == 'C')
 	{
 		if (data->path.path_c)
 			return (2);
 		data->path.path_c = ft_strndup(maplst->mapline + 2, (a - 3));
+		data->path.path_c = ft_strtrim(data->path.path_c, ' ');
 	}
 	else if (maplst->mapline[0] != '\n')
 		return (3);

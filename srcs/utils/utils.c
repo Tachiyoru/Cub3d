@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 16:01:13 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/06 16:03:10 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/11 19:53:51 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,16 @@ long	ft_atoi(char *str)
 		i++;
 	}
 	return (res * sign);
+}
+
+int	is_digit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+		i++;
+	if (str[i])
+		return (1);
+	return (0);
 }
