@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 19:34:40 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/08 21:23:24 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:33:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	dist(double ax, double ay, double bx, double by)
 	return (sqrt((bx - ax) * (bx-ax) + (by - ay) * (by - ay)));
 }
 
-void	raycasting(t_data *data)
+void	ray_pos(t_data *data)
 {
 	double	angle_tan;
 	double	dist_tot;
@@ -75,7 +75,7 @@ void	raycasting(t_data *data)
 			map_x = (int)rx >> 6;
 			map_y = (int)ry >> 6;
 			map_pos = map_y * data->map.size_x + map_x;
-			if (map_pos > 0 && map_pos < data->map.size_x * data->map.size_y && data->map.map[map_y][map_x] == '1') // hit a wall
+			if (map_pos > 0 && map_pos < data->map.size_x && data->map.map[map_y][map_x] == '1') // hit a wall
 				n_case = data->map.size_x;
 			else //next line
 			{
@@ -131,17 +131,20 @@ void	raycasting(t_data *data)
 		}
 		if (dis_ver < dis_horiz)
 		{
+			printf("dis_ver : %f\n", dis_ver);
 			rx = vx;
 			ry = vy;
 			dist_tot = dis_ver;
 		}
 		else
 		{
+			printf("dis_horiz : %f\n", dis_horiz);
 			rx = hx;
 			ry = hy;
 			dist_tot = dis_horiz;
 		}
 		n_ray++;
 		data->rc.ray_angle += DR;
+		printf("%f\n", dist_tot);
 	}
 }
