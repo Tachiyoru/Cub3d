@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 19:15:51 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/12 17:13:08 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:19:45 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ int	handle_keypress(int keysym, t_data *data)
 		move_cam(data, -0.05);
 	if (keysym == K_RIGHT)
 		move_cam(data, 0.05);
+	if (keysym == XK_Shift_L)
+	{
+		if (data->player_speed == 0.05)
+			data->player_speed *= 2;
+		else
+			data->player_speed = 0.05;
+	}
 	if (keysym == K_W)
 		move_player(data, 'W');
 	if (keysym == K_S)
