@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 20:00:25 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 12:09:59 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ void	ray_dist(t_ray *ray)
 	if (ray->raydir[X] < 0)
 		ray->sidedist[X] = (ray->pos[X] - ray->map[X]) * ray->deltadist[X];
 	else
-		ray->sidedist[X] = (ray->map[X] + 1.0 - ray->pos[X]) * ray->deltadist[X];
+		ray->sidedist[X] = (ray->map[X] + 1.0 - ray->pos[X])
+			* ray->deltadist[X];
 	if (ray->raydir[Y] < 0)
 		ray->sidedist[Y] = (ray->pos[Y] - ray->map[Y]) * ray->deltadist[Y];
 	else
-		ray->sidedist[Y] = (ray->map[Y] + 1.0 - ray->pos[Y]) * ray->deltadist[Y];
+		ray->sidedist[Y] = (ray->map[Y] + 1.0 - ray->pos[Y])
+			* ray->deltadist[Y];
 	if (ray->raydir[X] < 0)
 		ray->step[X] = -1;
 	else
