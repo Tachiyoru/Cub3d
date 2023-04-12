@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:20:40 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 18:31:42 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:14:16 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	check_path(t_data *data)
+{
+	if (data->path.path_n == NULL)
+		return (1);
+	else if (data->path.path_s == NULL)
+		return (1);
+	else if (data->path.path_w == NULL)
+		return (1);
+	else if (data->path.path_e == NULL)
+		return (1);
+	else if (data->path.path_f == NULL)
+		return (1);
+	else if (data->path.path_c == NULL)
+		return (1);
+	return (0);
+}
 
 int	check_map(t_data *data, char *file)
 {

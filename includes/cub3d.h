@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 12:31:20 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/12 14:22:29 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ int		init_map(t_data *data, int fd);
 t_lst	*store_map(int fd);
 int		store_path(t_data *data, t_lst *maplst, int a);
 int		store_path_2(t_data *data, t_lst *maplst, int a);
-int		check_path(t_data *data);
+int		store_path_3(t_data *data, t_lst *maplst, int a);
 
 // init_mlx.c
 void	init_player(t_data *data);
@@ -240,6 +240,7 @@ int		check_open(t_path img);
 void	close_txtures(int *fd);
 
 // check_map.c
+int		check_path(t_data *data);
 int		check_map(t_data *data, char *file);
 int		check_wall(char **map);
 char	**create_copy_map(char **map);
@@ -251,12 +252,13 @@ int		sizing(void *mlx, void *img_ptr, char *path);
 // data_map.c
 int		store_map_data(t_data *data, t_lst *tmp_map);
 int		verif_data(char **map);
-int		verif_char(t_lst *check);
+int		verif_char(t_lst *check, t_lst *tmp_map);
 
 // parsing_map.c
 int		is_player(t_data *data, char **map);
 int		return_is_player(int p);
 void	set_value(t_data *data, char c, int i, int j);
+void	set_value_2(t_data *data, char c);
 int		check_around(char **map, int y, int x);
 
 ////****************** UTILS ******************////
