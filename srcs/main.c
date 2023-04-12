@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 12:00:03 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/12 17:13:18 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	data = (t_data){0};
 	if (ac != 2)
 		return (err_msg(ARG_START, NULL, 1));
+	init_to_null_data(&data);
 	if (check_map(&data, av[1]))
 		return (2);
 	if (init_mlx(&data))

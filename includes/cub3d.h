@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 15:05:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:08:08 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@
 # define Y 0
 # define X 1
 
-# define SCREEN_WIDTH	1000
-# define SCREEN_HEIGHT	600
+# define SCREEN_WIDTH	1500
+# define SCREEN_HEIGHT	900
+// # define SPEED_CAM		0.05
+# define SPEED_PLAYER	0.05
 # define M_PI			3.14159265358979323846
 
 enum	e_player
@@ -144,6 +146,8 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*win_ptr;
 	double		player[MAX_POS];
+	int			mouse_pos;
+	double		player_speed;
 	t_image		img[MAX_IMG];
 	t_path		path;
 	t_map		map;

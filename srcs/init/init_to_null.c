@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 18:14:34 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:08:15 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	init_to_null_data(t_data *data)
 {
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
+	data->mouse_pos = 10000;
+	data->player_speed = 0.05;
 	data->player[POS_X] = 0;
 	data->player[POS_Y] = 0;
 	data->map.map = NULL;
