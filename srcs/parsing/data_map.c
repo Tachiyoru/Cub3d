@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 17:01:50 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:08:35 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ int	store_map_data(t_data *data, t_lst *tmp_map)
 	t_lst	*check;
 
 	check = tmp_map;
-	if (verif_char(check))
+	if (verif_char(check, tmp_map))
 		return (1);
-	while (tmp_map->mapline[0] == '\n')
-		tmp_map = tmp_map->next;
 	data->map.size_y = ft_lstsize(tmp_map);
 	data->map.map = ft_calloc(data->map.size_y + 1, sizeof(char *));
 	data->map.map[data->map.size_y] = NULL;
@@ -30,10 +28,12 @@ int	store_map_data(t_data *data, t_lst *tmp_map)
 	i = -1;
 	while (tmp_map)
 	{
+		if (tmp_map->mapline[ft_strlen(tmp_map->mapline) - 1] == '\n')
+			tmp_map->mapline[ft_strlen(tmp_map->mapline) - 1] = '\0';
 		data->map.map[++i] = ft_strndup(tmp_map->mapline,
-				(ft_strlen(tmp_map->mapline) - 1));
-		if (data->map.size_x < (ft_strlen(tmp_map->mapline) - 1))
-			data->map.size_x = (ft_strlen(tmp_map->mapline) - 1);
+				(ft_strlen(tmp_map->mapline)));
+		if (data->map.size_x < (ft_strlen(tmp_map->mapline)))
+			data->map.size_x = (ft_strlen(tmp_map->mapline));
 		if (!data->map.map[i])
 			return (1);
 		tmp_map = tmp_map->next;
@@ -59,10 +59,12 @@ int	verif_data(char **map)
 	return (0);
 }
 
-int	verif_char(t_lst *check)
+int	verif_char(t_lst *check, t_lst *tmp_map)
 {
 	int	i;
 
+	while (tmp_map->mapline[0] == '\n')
+		tmp_map = tmp_map->next;
 	while (check)
 	{
 		i = 0;

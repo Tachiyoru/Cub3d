@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:06:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 20:04:46 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:16:52 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,6 @@ int	store_path(t_data *data, t_lst *maplst, int a)
 		data->path.path_s = ft_strndup(maplst->mapline + 3, (a - 4));
 		data->path.path_s = ft_strtrim(data->path.path_s, ' ');
 	}
-	else if (ft_strncmp(maplst->mapline, "WE", 2))
-	{
-		if (data->path.path_w)
-			return (2);
-		data->path.path_w = ft_strndup(maplst->mapline + 3, (a - 4));
-		data->path.path_w = ft_strtrim(data->path.path_w, ' ');
-	}
 	else
 		return (store_path_2(data, maplst, a));
 	return (0);
@@ -94,7 +87,14 @@ int	store_path(t_data *data, t_lst *maplst, int a)
 
 int	store_path_2(t_data *data, t_lst *maplst, int a)
 {
-	if (ft_strncmp(maplst->mapline, "EA", 2))
+	if (ft_strncmp(maplst->mapline, "WE", 2))
+	{
+		if (data->path.path_w)
+			return (2);
+		data->path.path_w = ft_strndup(maplst->mapline + 3, (a - 4));
+		data->path.path_w = ft_strtrim(data->path.path_w, ' ');
+	}
+	else if (ft_strncmp(maplst->mapline, "EA", 2))
 	{
 		if (data->path.path_e)
 			return (2);
@@ -108,7 +108,14 @@ int	store_path_2(t_data *data, t_lst *maplst, int a)
 		data->path.path_f = ft_strndup(maplst->mapline + 2, (a - 3));
 		data->path.path_f = ft_strtrim(data->path.path_f, ' ');
 	}
-	else if (maplst->mapline[0] == 'C')
+	else
+		return (store_path_3(data, maplst, a));
+	return (0);
+}
+
+int	store_path_3(t_data *data, t_lst *maplst, int a)
+{
+	if (maplst->mapline[0] == 'C')
 	{
 		if (data->path.path_c)
 			return (2);
@@ -117,22 +124,5 @@ int	store_path_2(t_data *data, t_lst *maplst, int a)
 	}
 	else if (maplst->mapline[0] != '\n')
 		return (3);
-	return (0);
-}
-
-int	check_path(t_data *data)
-{
-	if (data->path.path_n == NULL)
-		return (1);
-	else if (data->path.path_s == NULL)
-		return (1);
-	else if (data->path.path_w == NULL)
-		return (1);
-	else if (data->path.path_e == NULL)
-		return (1);
-	else if (data->path.path_f == NULL)
-		return (1);
-	else if (data->path.path_c == NULL)
-		return (1);
 	return (0);
 }

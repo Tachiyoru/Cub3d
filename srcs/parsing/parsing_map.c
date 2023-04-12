@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 17:01:09 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:21:47 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,15 @@ void	set_value(t_data *data, char c, int i, int j)
 		data->ray.plan[Y] = 0;
 		data->player[ANGLE] = 1.5 * M_PI;
 	}
-	else if (c == 'E')
+	else
+		set_value_2(data, c);
+	data->player[POS_Y] = i;
+	data->player[POS_X] = j;
+}
+
+void	set_value_2(t_data *data, char c)
+{
+	if (c == 'E')
 	{
 		data->ray.dir[X] = 1;
 		data->ray.dir[Y] = 0;
@@ -71,8 +79,6 @@ void	set_value(t_data *data, char c, int i, int j)
 		data->ray.plan[Y] = -0.66;
 		data->player[ANGLE] = 0;
 	}
-	data->player[POS_Y] = i;
-	data->player[POS_X] = j;
 }
 
 int	return_is_player(int p)
