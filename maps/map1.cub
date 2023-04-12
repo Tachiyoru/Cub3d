@@ -1,10 +1,10 @@
-NO images/n.xpm
-SO images/s.xpm
-WE images/w.xpm
-EA images/e.xpm
+NO images/north.xpm
+SO images/south.xpm
+WE images/west.xpm
+EA images/east.xpm
 
-F 220,100,200
-C 225,30,0
+F 43,29,114
+C 106,79,240
 
 
 
