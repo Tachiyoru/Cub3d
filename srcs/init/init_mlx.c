@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/12 11:59:54 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/12 15:19:53 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	init_mlx(t_data *data)
 
 void	loop_hook(t_data data)
 {
+	mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &mouse_move, &data);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, ClientMessage, LeaveWindowMask,
