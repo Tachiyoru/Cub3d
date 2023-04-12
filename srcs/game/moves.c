@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:12:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 13:18:43 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/12 14:09:58 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	move_player(t_data *data, char c)
 					data->ray.pos[X] - (0.03 * data->ray.dir[Y])));
 	if (data->map.map[(int)newpos[Y]][(int)newpos[X]] == '1')
 		return ;
+	data->player[POS_X] = newpos[X];
+	data->player[POS_Y] = newpos[Y];
 	data->ray.pos[X] = newpos[X];
 	data->ray.pos[Y] = newpos[Y];
 	return ;

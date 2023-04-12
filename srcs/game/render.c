@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 20:00:25 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:06:01 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,22 @@
 
 int	render(t_data *data)
 {
+	int	x;
+	int	y;
+
+	y = 0;
 	print_background(data);
 	raycasting(data);
+	while (data->map.map[y])
+	{
+		x = 0;
+		while (data->map.map[y][x])
+		{
+			convert_map_minimap(data, y, x);
+			x++;
+		}
+		y++;
+	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 		data->img[RENDU].img, 0, 0);
 	return (0);

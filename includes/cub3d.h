@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 12:31:20 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/12 13:58:28 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,11 @@ void	free_path(t_path img);
 void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
 ////****************** GAME *******************////
+
+// mini_map.c
+void	convert_map_minimap(t_data *data, int y, int x);
+void	print_box(t_data *data, int y, int x, int color);
+
 // moves.c
 void	move_cam(t_data *data, double mouv);
 void	move_player(t_data *data, char c);
