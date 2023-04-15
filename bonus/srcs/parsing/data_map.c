@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 14:08:35 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 17:41:34 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	verif_data(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' '
+				&& map[i][j] != 'D')
 				return (1);
 		}
 	}
@@ -71,7 +72,8 @@ int	verif_char(t_lst *check, t_lst *tmp_map)
 		while (check->mapline[i])
 		{
 			if (check->mapline[i] == ' ' || check->mapline[i] == '0'
-				|| check->mapline[i] == '1' || check->mapline[i] == '\n')
+				|| check->mapline[i] == '1' || check->mapline[i] == '\n'
+				|| check->mapline[i] == 'D')
 				i++;
 			else if (check->mapline[i] == 'N' || check->mapline[i] == 'S'
 				|| check->mapline[i] == 'W' || check->mapline[i] == 'E')
