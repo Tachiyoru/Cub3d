@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_txturs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 13:56:48 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 14:05:06 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ int	init_images(t_data *data)
 			&data->img[WALL_EAST].height);
 	if (!data->img[WALL_EAST].img)
 		return (err_msg(data->path.path_e, XPM, 4));
-	init_f_c(data);
+	if (init_f_c(data))
+		return (5);
 	return (0);
 }
 
-void	init_f_c(t_data *data)
+int	init_f_c(t_data *data)
 {
 	data->img[FLOOR].img = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->path.path_f, &data->img[FLOOR].width,
@@ -76,6 +77,7 @@ void	init_f_c(t_data *data)
 			&data->img[CEIL].endian);
 	if (!data->img[CEIL].addr)
 		return (err_msg(NULL, DATA_ADDR, 2));
+	return (0);
 }
 
 int	init_textures(t_data *data)
