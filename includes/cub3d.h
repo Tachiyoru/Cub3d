@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 17:08:08 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/15 11:57:44 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ enum	e_img
 	WALL_WEST,
 	WALL_EAST,
 	RENDU,
+	FLOOR,
+	CEIL,
 	MAX_IMG,
 };
 
@@ -160,6 +162,9 @@ typedef struct s_lst
 	char			*mapline;
 	struct s_lst	*next;
 }t_lst;
+
+
+void	floor_casting(t_data *data, int y);
 
 /****************************************************/
 /*						FCTS						*/
