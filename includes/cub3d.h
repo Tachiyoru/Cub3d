@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 13:47:55 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 14:04:21 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,7 @@ void	init_to_null_img(t_data *data);
 // init_txturs.c
 int		init_rendu(t_data *data);
 int		init_images(t_data *data);
+int		init_f_c(t_data *data);
 int		init_textures(t_data *data);
 
 ////***************** KEYPRESS ****************////
