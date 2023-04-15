@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 12:47:31 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 17:37:03 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,11 @@ void	dda_algo(t_ray *ray, t_map *map)
 		}
 		if (map->map[ray->map[Y]][ray->map[X]] == '1')
 			ray->hit = 1;
-		else if (map->map[ray->map[Y]][ray->map[X]] == 'X')
+		else if (map->map[ray->map[Y]][ray->map[X]] == 'D')
+		{
 			ray->hit = 1;
+			ray->door = 1;
+		}
 	}
 }
 
