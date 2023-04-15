@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 16:00:49 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/11 17:21:31 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:27:40 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	free_path(t_path img)
 	ft_free(img.path_s);
 	ft_free(img.path_w);
 	ft_free(img.path_e);
-	ft_free(img.path_f);
-	ft_free(img.path_c);
+	// ft_free(img.path_f);
+	// ft_free(img.path_c);
 }
 
 void	free_all(t_data *data)
@@ -52,7 +52,7 @@ void	free_all(t_data *data)
 	destroy_all(data);
 }
 
-// Free un char **, si n == 0 en etierete, sinon jusqu'a n
+// Free un char **, si n == 0 en entierete, sinon jusqu'a n
 void	free_tab(char **tab, int n)
 {
 	int	i;

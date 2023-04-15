@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:12:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 17:17:50 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:27:22 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,39 @@ void	move_cam(t_data *data, double mouv)
 	data->ray.plan[Y] = save_plan * sin(mouv) + data->ray.plan[Y] * cos(mouv);
 }
 
-void	move_player(t_data *data, char c)
+void	move_player(t_data *d, char c)
 {
-	double	newpos[2];
+	double	new[2];
 
 	if (c == 'W')
-		newpos[X] = ((newpos[Y] = data->ray.pos[Y] + (data->player_speed * data->ray.dir[Y]),
-					data->ray.pos[X] + (data->player_speed * data->ray.dir[X])));
+	{
+		new[X] = ((new[Y] = d->ray.pos[Y] + (d->player_speed * d->ray.dir[Y]),
+					d->ray.pos[X] + (d->player_speed * d->ray.dir[X])));
+		if (d->map.map[(int)(d->ray.pos[Y] + d->ray.dir[Y] * 0.2)][(int)new[X]]
+			== '1')
+			return ;
+	}
 	else if (c == 'S')
-		newpos[X] = ((newpos[Y] = data->ray.pos[Y] - (data->player_speed * data->ray.dir[Y]),
-					data->ray.pos[X] - (data->player_speed * data->ray.dir[X])));
+		new[X] = ((new[Y] = d->ray.pos[Y] - (d->player_speed * d->ray.dir[Y]),
+					d->ray.pos[X] - (d->player_speed * d->ray.dir[X])));
 	else if (c == 'A')
-		newpos[X] = ((newpos[Y] = data->ray.pos[Y] - (data->player_speed * data->ray.dir[X]),
-					data->ray.pos[X] + (data->player_speed * data->ray.dir[Y])));
+		new[X] = ((new[Y] = d->ray.pos[Y] - (d->player_speed * d->ray.dir[X]),
+					d->ray.pos[X] + (d->player_speed * d->ray.dir[Y])));
 	else if (c == 'D')
-		newpos[X] = ((newpos[Y] = data->ray.pos[Y] + (data->player_speed * data->ray.dir[X]),
-					data->ray.pos[X] - (data->player_speed * data->ray.dir[Y])));
-	if (data->map.map[(int)newpos[Y]][(int)newpos[X]] == '1')
+		new[X] = ((new[Y] = d->ray.pos[Y] + (d->player_speed * d->ray.dir[X]),
+					d->ray.pos[X] - (d->player_speed * d->ray.dir[Y])));
+	if (d->map.map[(int)new[Y]][(int)new[X]] == '1')
 		return ;
+	update_pos(d, new);
+	return ;
+}
+
+void	update_pos(t_data *data, double newpos[2])
+{
 	data->player[POS_X] = newpos[X];
 	data->player[POS_Y] = newpos[Y];
 	data->ray.pos[X] = newpos[X];
 	data->ray.pos[Y] = newpos[Y];
-	return ;
 }
 
 int	mouse_move(int x, int y, t_data *data)
