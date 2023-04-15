@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 16:38:18 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/15 17:16:35 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@
 
 # define SCREEN_WIDTH	1500
 # define SCREEN_HEIGHT	900
-// # define SPEED_CAM		0.05
-# define SPEED_PLAYER	0.05
 # define M_PI			3.14159265358979323846
 
 enum	e_player
@@ -170,7 +168,6 @@ typedef struct s_lst
 }t_lst;
 
 
-void	floor_ceiling_casting(t_data *data, int y);
 void	fc_casting_2(t_data *data, int y, float *floor, float *floorstep);
 
 /****************************************************/
@@ -247,7 +244,6 @@ void	init_to_null_img(t_data *data);
 // init_txturs.c
 int		init_rendu(t_data *data);
 int		init_images(t_data *data);
-int		init_f_c(t_data *data);
 int		init_textures(t_data *data);
 
 ////***************** KEYPRESS ****************////

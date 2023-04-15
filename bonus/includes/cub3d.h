@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 17:02:07 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/15 17:12:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@
 
 # define SCREEN_WIDTH	1500
 # define SCREEN_HEIGHT	900
-// # define SPEED_CAM		0.05
-# define SPEED_PLAYER	0.05
 # define M_PI			3.14159265358979323846
 
 enum	e_player
@@ -104,8 +102,6 @@ typedef struct s_path
 	char	*path_e;
 	char	*path_f;
 	char	*path_c;
-	int		color_c;
-	int		color_f;
 }t_path;
 
 typedef struct s_image
@@ -215,7 +211,6 @@ void	wall_lenght(t_ray *ray, int screen_height);
 
 // render.c
 int		render(t_data *data);
-void	print_background(t_data *data);
 void	init_walls(t_ray *ray, t_text *text);
 void	draw_wall(t_data *data, int x0, t_ray *ray, t_text *text);
 

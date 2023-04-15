@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_to_null.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:54:44 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 16:36:51 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 17:11:45 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_txturs_to_null(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < MAX_IMG)
 	{
 		data->img[i].addr = NULL;
 		data->img[i].bpp = 0;
@@ -39,8 +39,6 @@ void	init_to_null_data(t_data *data)
 	data->map.map = NULL;
 	data->map.size_x = 0;
 	data->map.size_y = 0;
-	data->path.color_c = 0;
-	data->path.color_f = 0;
 	init_to_null_img(data);
 	init_txturs_to_null(data);
 }

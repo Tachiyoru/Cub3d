@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 16:38:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/15 17:19:17 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,37 +58,6 @@ int	init_images(t_data *data)
 			&data->img[WALL_EAST].height);
 	if (!data->img[WALL_EAST].img)
 		return (err_msg(data->path.path_e, XPM, 4));
-	if (init_f_c(data))
-		return (5);
-	return (0);
-}
-
-int	init_f_c(t_data *data)
-{
-	ft_free(data->path.path_c);
-	ft_free(data->path.path_f); // a regler mieux
-	data->path.path_c = PATH_C;
-	data->path.path_f = PATH_F;
-	data->img[FLOOR].img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->path.path_f, &data->img[FLOOR].width,
-			&data->img[FLOOR].height);
-	if (!data->img[FLOOR].img)
-		return (err_msg(NULL, INIT_IMG, 1));
-	data->img[FLOOR].addr = (int *)mlx_get_data_addr(data->img[FLOOR].img,
-			&data->img[FLOOR].bpp, &data->img[FLOOR].line_len,
-			&data->img[FLOOR].endian);
-	if (!data->img[FLOOR].addr)
-		return (err_msg(NULL, DATA_ADDR, 2));
-	data->img[CEIL].img = mlx_xpm_file_to_image(data->mlx_ptr,
-			data->path.path_c, &data->img[CEIL].width,
-			&data->img[CEIL].height);
-	if (!data->img[CEIL].img)
-		return (err_msg(NULL, INIT_IMG, 1));
-	data->img[CEIL].addr = (int *)mlx_get_data_addr(data->img[CEIL].img,
-			&data->img[CEIL].bpp, &data->img[CEIL].line_len,
-			&data->img[CEIL].endian);
-	if (!data->img[CEIL].addr)
-		return (err_msg(NULL, DATA_ADDR, 2));
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 12:47:31 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 17:17:50 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 void	raycasting(t_data *data)
 {
 	int	x;
-	int	y;
 
-	y = -1;
-	while (++y < SCREEN_HEIGHT)
-		floor_ceiling_casting(data, y);
+	print_background(data);
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{

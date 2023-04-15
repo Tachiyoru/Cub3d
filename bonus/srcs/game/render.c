@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 16:13:54 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 17:11:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	render(t_data *data)
 	int	y;
 
 	y = 0;
-	print_background(data);
 	raycasting(data);
 	while (data->map.map[y])
 	{
@@ -41,30 +40,6 @@ int	render(t_data *data)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img[RENDU].img, 0, 0);
 	return (0);
-}
-
-void	print_background(t_data *data)
-{
-	int	j;
-	int	i;
-
-	j = 0;
-	while (j < SCREEN_HEIGHT / 2)
-	{
-		i = -1;
-		while (++i < SCREEN_WIDTH)
-			data->img[RENDU].addr[j * data->img[RENDU].line_len / 4 + i]
-				= data->path.color_c;
-		j++;
-	}
-	while (j < SCREEN_HEIGHT)
-	{
-		i = -1;
-		while (++i < SCREEN_WIDTH)
-			data->img[RENDU].addr[j * data->img[RENDU].line_len / 4 + i]
-				= data->path.color_f;
-		j++;
-	}
 }
 
 void	init_walls(t_ray *ray, t_text *text)
