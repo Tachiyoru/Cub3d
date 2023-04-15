@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:18 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/12 14:21:47 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 16:55:21 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,18 @@ int	return_is_player(int p)
 int	check_around(char **map, int y, int x)
 {
 	if (x + 1 >= ft_strlen(map[y]) && (map[y][x + 1] != '1'
-		&& map[y][x + 1] != '0'))
+		&& map[y][x + 1] != '0' && map[y][x + 1] != 'D'))
 		return (1);
-	else if (x - 1 < 0 || ((map[y][x - 1] != '1' && map[y][x - 1] != '0')))
+	else if (x - 1 < 0 || ((map[y][x - 1] != 'D' &&
+		map[y][x - 1] != '1' && map[y][x - 1] != '0')))
 		return (1);
 	else if (x >= ft_strlen(map[y + 1])
-		|| (map[y + 1][x] != '1' && map[y + 1][x] != '0'))
+		|| (map[y + 1][x] != 'D' && map[y + 1][x] != '1'
+		&& map[y + 1][x] != '0'))
 		return (1);
 	else if ((x > ft_strlen(map[y - 1])
-			|| (map[y - 1][x] != '1' && map[y - 1][x] != '0')))
+			|| (map[y - 1][x] != 'D' && map[y - 1][x] != '1'
+			&& map[y - 1][x] != '0')))
 		return (1);
 	return (0);
 }
