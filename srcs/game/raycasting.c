@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 11:43:09 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 12:47:31 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 void	raycasting(t_data *data)
 {
 	int	x;
+	int	y;
 
+	y = -1;
+	while (++y < SCREEN_HEIGHT)
+		floor_ceiling_casting(data, y);
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{

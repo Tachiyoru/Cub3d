@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 11:57:44 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 13:47:55 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include <fcntl.h>
 # include <math.h>
 # include <X11/X.h>
+
+# define PATH_F "images/floor.xpm"
+# define PATH_C "images/ceil.xpm"
 
 # define K_ESC			65307
 # define K_UP			65362
@@ -164,7 +167,8 @@ typedef struct s_lst
 }t_lst;
 
 
-void	floor_casting(t_data *data, int y);
+void	floor_ceiling_casting(t_data *data, int y);
+void	fc_casting_2(t_data *data, int y, float *floor, float *floorstep);
 
 /****************************************************/
 /*						FCTS						*/

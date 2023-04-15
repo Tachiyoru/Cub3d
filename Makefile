@@ -17,6 +17,7 @@ SRCS		=	main.c					\
 				error_msg.c				\
 				free_mlx.c				\
 				free.c					\
+				fc_casting.c			\
 				mini_map.c				\
 				moves.c					\
 				raycasting.c			\
