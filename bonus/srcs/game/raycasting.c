@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 17:31:00 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 12:47:31 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	raycasting(t_data *data)
 {
 	int	x;
+	int	y;
 
-	print_background(data);
+	y = -1;
+	while (++y < SCREEN_HEIGHT)
+		floor_ceiling_casting(data, y);
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{
@@ -81,11 +84,8 @@ void	dda_algo(t_ray *ray, t_map *map)
 		}
 		if (map->map[ray->map[Y]][ray->map[X]] == '1')
 			ray->hit = 1;
-		else if (map->map[ray->map[Y]][ray->map[X]] == 'D')
-		{
+		else if (map->map[ray->map[Y]][ray->map[X]] == 'X')
 			ray->hit = 1;
-			ray->door = 1;
-		}
 	}
 }
 

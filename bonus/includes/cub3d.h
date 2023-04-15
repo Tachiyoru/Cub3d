@@ -6,11 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/04/15 17:22:30 by sleon            ###   ########.fr       */
-=======
-/*   Updated: 2023/04/15 17:16:35 by msharifi         ###   ########.fr       */
->>>>>>> 8190f90ef34aac0586e2fc2fc18dfd86e057d1e2
+/*   Updated: 2023/04/15 17:12:00 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +28,6 @@
 
 # define PATH_F "images/floor.xpm"
 # define PATH_C "images/ceil.xpm"
-# define PATH_D "images/door.xpm"
 # define PATH_X "images/oui.xpm"
 
 # define K_ESC			65307
@@ -68,10 +63,9 @@ enum	e_img
 	WALL_SOUTH,
 	WALL_WEST,
 	WALL_EAST,
-	DOOR,
+	RENDU,
 	FLOOR,
 	CEIL,
-	RENDU,
 	SURPRISE,
 	MAX_IMG,
 };
@@ -108,9 +102,6 @@ typedef struct s_path
 	char	*path_e;
 	char	*path_f;
 	char	*path_c;
-	char	*path_d;
-	int		color_c;
-	int		color_f;
 }t_path;
 
 typedef struct s_image
@@ -135,7 +126,6 @@ typedef struct s_ray
 	float		sidedist[2];
 	float		deltadist[2];
 	int			step[2];
-	int			door;
 	int			hit;
 	int			side;
 	float		paperwalldist;
@@ -176,6 +166,7 @@ typedef struct s_lst
 }t_lst;
 
 
+void	floor_ceiling_casting(t_data *data, int y);
 void	fc_casting_2(t_data *data, int y, float *floor, float *floorstep);
 
 /****************************************************/
@@ -220,7 +211,6 @@ void	wall_lenght(t_ray *ray, int screen_height);
 
 // render.c
 int		render(t_data *data);
-void	print_background(t_data *data);
 void	init_walls(t_ray *ray, t_text *text);
 void	draw_wall(t_data *data, int x0, t_ray *ray, t_text *text);
 
@@ -239,11 +229,6 @@ int		check_screen_size(t_data *data);
 int		init_mlx(t_data *data);
 void	loop_hook(t_data data);
 
-// init_rgb.c
-int		init_rgb(t_data *data);
-int		check_tab(char **tab);
-int		make_rgb(int r, int g, int b);
-
 // init_to_null.c
 void	init_txturs_to_null(t_data *data);
 void	init_to_null_data(t_data *data);
@@ -252,6 +237,7 @@ void	init_to_null_img(t_data *data);
 // init_txturs.c
 int		init_rendu(t_data *data);
 int		init_images(t_data *data);
+int		init_f_c(t_data *data);
 int		init_textures(t_data *data);
 
 ////***************** KEYPRESS ****************////
@@ -298,12 +284,6 @@ void	*ft_calloc(size_t n, size_t size);
 t_lst	*ft_lstnew(char *str);
 t_lst	*ft_lstlast(t_lst *lst);
 int		ft_lstsize(t_lst *lst);
-
-// split.c
-int		word_count(char *str, char set);
-int		char_count(char *str, char set, int pos);
-char	*ft_putword(char *str, char *tab, char set, int pos);
-char	**ft_split(char	*str, char set);
 
 // str_utils.c
 int		ft_strlen(char *str);

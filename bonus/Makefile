@@ -17,6 +17,7 @@ SRCS		=	main.c					\
 				error_msg.c				\
 				free_mlx.c				\
 				free.c					\
+				fc_casting.c			\
 				mini_map.c				\
 				moves.c					\
 				raycasting.c			\
@@ -25,7 +26,6 @@ SRCS		=	main.c					\
 				get_next_line_utils.c	\
 				init_mlx.c				\
 				init_map.c				\
-				init_rgb.c				\
 				init_to_null.c			\
 				init_txturs.c			\
 				keypress.c				\
@@ -36,7 +36,6 @@ SRCS		=	main.c					\
 				parsing_map.c			\
 				alloc.c					\
 				lst_utils.c				\
-				split.c					\
 				str_utils.c				\
 				utils.c
 
