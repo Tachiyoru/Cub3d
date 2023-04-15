@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/12 14:30:32 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/13 13:13:50 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ enum	e_img
 	WALL_WEST,
 	WALL_EAST,
 	RENDU,
+	FLOOR,
+	CEIL,
 	MAX_IMG,
 };
 
@@ -156,6 +158,9 @@ typedef struct s_lst
 	char			*mapline;
 	struct s_lst	*next;
 }t_lst;
+
+
+void	floor_casting(t_data *data, int y);
 
 /****************************************************/
 /*						FCTS						*/

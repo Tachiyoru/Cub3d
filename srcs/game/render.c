@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/12 14:06:01 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/15 11:31:40 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	init_walls(t_ray *ray, t_text *text)
 	text->wallx -= floor(text->wallx);
 }
 
-void	draw_wall(t_data *data, int x0, t_ray *ray, t_text *text)
+void	draw_wall(t_data *data, int x, t_ray *ray, t_text *text)
 {
 	int	j;
 
@@ -94,8 +94,8 @@ void	draw_wall(t_data *data, int x0, t_ray *ray, t_text *text)
 	{
 		text->texy = (int)text->texpos & (data->img[text->texdir].height - 1);
 		text->texpos += text->step;
-		if (j < SCREEN_HEIGHT && x0 < SCREEN_WIDTH)
-			data->img[RENDU].addr[j * data->img[RENDU].line_len / 4 + x0]
+		if (j < SCREEN_HEIGHT && x < SCREEN_WIDTH)
+			data->img[RENDU].addr[j * data->img[RENDU].line_len / 4 + x]
 				= data->img[text->texdir].addr[text->texy
 				* data->img[text->texdir].line_len / 4 + text->texx];
 		j++;

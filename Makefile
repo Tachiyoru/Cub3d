@@ -52,6 +52,8 @@ CFLAGS		=	-Werror -Wall -Wextra -g3
 
 all:	${NAME}
 
+bonus: $(NAME_B)
+
 ${MLX_LIB}:
 		make -C ${MLX} -j
 
