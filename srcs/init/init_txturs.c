@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 14:04:39 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 14:09:19 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	init_rendu(t_data *data)
 {
-	data->path.path_c = PATH_C;
-	data->path.path_f = PATH_F;
 	data->img[RENDU].img = mlx_new_image(data->mlx_ptr, SCREEN_WIDTH,
 			SCREEN_HEIGHT);
 	if (!data->img[RENDU].img)
@@ -51,12 +49,14 @@ int	init_images(t_data *data)
 	if (!data->img[WALL_EAST].img)
 		return (err_msg(data->path.path_e, XPM, 4));
 	if (init_f_c(data))
-		return(5);
+		return (5);
 	return (0);
 }
 
 int	init_f_c(t_data *data)
 {
+	data->path.path_c = PATH_C;
+	data->path.path_f = PATH_F;
 	data->img[FLOOR].img = mlx_xpm_file_to_image(data->mlx_ptr,
 			data->path.path_f, &data->img[FLOOR].width,
 			&data->img[FLOOR].height);
