@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_txturs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 15:27:04 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 16:38:23 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	init_images(t_data *data)
 
 int	init_f_c(t_data *data)
 {
+	ft_free(data->path.path_c);
+	ft_free(data->path.path_f); // a regler mieux
 	data->path.path_c = PATH_C;
 	data->path.path_f = PATH_F;
 	data->img[FLOOR].img = mlx_xpm_file_to_image(data->mlx_ptr,

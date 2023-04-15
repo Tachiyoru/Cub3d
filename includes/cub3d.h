@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 16:04:19 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 16:38:18 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ void	print_box(t_data *data, int y, int x, int color);
 // moves.c
 void	move_cam(t_data *data, double mouv);
 void	move_player(t_data *data, char c);
+void	update_pos(t_data *data, double newpos[2]);
 int 	mouse_move(int x, int y, t_data *data);
 
 // raycasting.c
