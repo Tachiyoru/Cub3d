@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 14:10:22 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 16:04:19 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # define PATH_F "images/floor.xpm"
 # define PATH_C "images/ceil.xpm"
+# define PATH_X "images/oui.xpm"
 
 # define K_ESC			65307
 # define K_UP			65362
@@ -67,6 +68,7 @@ enum	e_img
 	RENDU,
 	FLOOR,
 	CEIL,
+	SURPRISE,
 	MAX_IMG,
 };
 
@@ -152,6 +154,7 @@ typedef struct s_data
 	void		*win_ptr;
 	double		player[MAX_POS];
 	int			mouse_pos;
+	int			q;
 	double		player_speed;
 	t_image		img[MAX_IMG];
 	t_path		path;

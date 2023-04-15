@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 14:10:20 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 15:27:04 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ int	init_rendu(t_data *data)
 			&data->img[RENDU].bpp, &data->img[RENDU].line_len,
 			&data->img[RENDU].endian);
 	if (!data->img[RENDU].addr)
+		return (err_msg(NULL, DATA_ADDR, 2));
+	data->img[SURPRISE].img = mlx_xpm_file_to_image(data->mlx_ptr,
+			PATH_X, &data->img[SURPRISE].width,
+			&data->img[SURPRISE].height);
+	if (!data->img[SURPRISE].img)
+		return (err_msg(NULL, INIT_IMG, 1));
+	data->img[SURPRISE].addr = (int *)mlx_get_data_addr(data->img[SURPRISE].img,
+			&data->img[SURPRISE].bpp, &data->img[SURPRISE].line_len,
+			&data->img[SURPRISE].endian);
+	if (!data->img[SURPRISE].addr)
 		return (err_msg(NULL, DATA_ADDR, 2));
 	return (0);
 }
