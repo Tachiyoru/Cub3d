@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/17 17:59:03 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:31:41 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 // collision direction EAST/WEST
 // animation mur
-// rearranger bonus dans un dossier a la racine du depot
 
 int	main(int ac, char **av)
 {

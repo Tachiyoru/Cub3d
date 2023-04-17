@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:07:12 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 16:29:56 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 18:31:31 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// mlx_get_screen_size(cub3d->game.mlx, &cub3d->sizex, &cub3d->sizey);
-// dans crete_window
 
 int	main(int ac, char **av)
 {
