@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/17 16:19:55 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 17:11:05 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_walls(t_ray *ray, t_text *text)
 		text->texdir = 2;
 	if (ray->side == 1 && ray->raydir[Y] > 0)
 		text->texdir = 3;
-	if (ray->side == 0 && ray->door == 1)
+	if (ray->door == 1)
 	{
 		text->texdir = 4;
 		ray->door_state++;

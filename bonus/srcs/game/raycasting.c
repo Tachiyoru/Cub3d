@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/17 16:22:57 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 17:30:00 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	raycasting(t_data *data)
 	int	y;
 
 	y = -1;
-	data->ray.door_state = 0;
 	while (++y < SCREEN_HEIGHT)
 		floor_ceiling_casting(data, y);
 	x = 0;
@@ -87,24 +86,19 @@ void	dda_algo(t_ray *ray, t_map *map)
 		}
 		if (map->map[ray->map[Y]][ray->map[X]] == '1')
 			ray->hit = 1;
-		if (map->map[ray->map[Y]][ray->map[X]] == 'P' && ray->door_state >= 10)
+		else if (map->map[ray->map[Y]][ray->map[X]] == 'P' && ray->moose_click == 1)
 		{
-			ray->door_state = 0;
-			printf("oui\n");
 			map->map[ray->map[Y]][ray->map[X]] = 'D';
+			ray->moose_click = 0;
+			ray->hit = 1;
 		}
 		else if (map->map[ray->map[Y]][ray->map[X]] == 'D')
 		{
-			if (ray->side == 0)
-				dist = (ray->sidedist[X] - ray->deltadist[X]);
-			else
-				dist = (ray->sidedist[Y] - ray->deltadist[Y]);
-			if (ray->moose_click == 1 && dist < 1 && ray->door_state < 10)
+			dist = (ray->sidedist[X] - ray->deltadist[X]);
+			if (ray->moose_click == 1 && dist < 0.8)
 			{
-				printf("dist = %f\n", dist);
-				printf("test\n");
-				ray->door_state++;
 				map->map[ray->map[Y]][ray->map[X]] = 'P';
+				ray->moose_click = 0;
 			}
 			else
 			{
