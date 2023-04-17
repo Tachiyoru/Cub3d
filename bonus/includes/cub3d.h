@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 17:40:30 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/15 19:29:28 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # include <math.h>
 # include <X11/X.h>
 
-# define PATH_F "images/floor.xpm"
-# define PATH_C "images/ceil.xpm"
 # define PATH_D "images/door.xpm"
 # define PATH_X "images/oui.xpm"
 
