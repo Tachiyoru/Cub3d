@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 17:06:30 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:13:57 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,25 @@ int	init_mlx(t_data *data)
 	return (0);
 }
 
+int	mouse_set(int clic, int y, int x, t_data *data)
+{
+	(void)y;
+	(void)x;
+	printf("clic = %d\n", clic);
+	if (clic == 1)
+	{
+		data->ray.moose_click = 1;
+		printf("CLIQUE	\n");
+	}
+	return (0);
+}
+
 void	loop_hook(t_data data)
 {
 	// mlx_mouse_hide(data.mlx_ptr, data.win_ptr); // leak de fou ??
 	mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &mouse_move, &data);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
+	mlx_mouse_hook(data.win_ptr, &mouse_set, &data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, ClientMessage, LeaveWindowMask,
 		&handle_btnrealease, &data);

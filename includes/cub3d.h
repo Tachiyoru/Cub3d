@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 17:31:50 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 15:27:50 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ typedef struct s_ray
 	float		sidedist[2];
 	float		deltadist[2];
 	int			step[2];
-	int			door;
 	int			hit;
 	int			side;
 	float		paperwalldist;

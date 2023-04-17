@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 17:37:31 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 16:19:55 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	render(t_data *data)
 	else
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img[RENDU].img, 0, 0);
+	data->ray.moose_click = 0;
 	return (0);
 }
 
@@ -55,6 +56,7 @@ void	init_walls(t_ray *ray, t_text *text)
 	if (ray->side == 0 && ray->door == 1)
 	{
 		text->texdir = 4;
+		ray->door_state++;
 		ray->door = 0;
 	}
 	if (ray->side == 0)
@@ -88,4 +90,4 @@ void	draw_wall(t_data *data, int x, t_ray *ray, t_text *text)
 				* data->img[text->texdir].line_len / 4 + text->texx];
 		j++;
 	}
-}
+	}
