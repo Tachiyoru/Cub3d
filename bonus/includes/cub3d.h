@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 19:29:28 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:07:30 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ int		err_msg(char *s1, char *s2, int ret_val);
 
 // free_mlx.c
 void	destroy_images(t_data *data);
+void	destroy_images_2(t_data *data);
 void	destroy_all(t_data *data);
 
 // free.c
