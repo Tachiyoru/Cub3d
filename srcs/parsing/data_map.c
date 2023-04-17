@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:45:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 16:51:26 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 18:09:57 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	verif_data(char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ' && map[i][j] != 'D')
+			if (map[i][j] != '1' && map[i][j] != '0'
+				&& map[i][j] != ' ' && map[i][j] != 'D')
 				return (1);
 		}
 	}

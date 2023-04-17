@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/17 16:28:10 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 18:07:58 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,27 @@ int	render(t_data *data)
 		}
 		y++;
 	}
-	if ((int)data->player[POS_X] == 4 && (int)data->player[POS_Y] == 10 && data->q <= 4)
+	if (surprise_mother_fucker(data))
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img[RENDU].img, 0, 0);
+	else
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+			data->img[RENDU].img, 0, 0);
+	return (0);
+}
+
+int	surprise_mother_fucker(t_data *data)
+{
+	if ((int)data->player[POS_X] == 4 && (int)data->player[POS_Y] == 10
+		&& data->q <= 4)
 	{
 		mlx_clear_window(data->mlx_ptr, data->win_ptr);
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img[SURPRISE].img, 400, 200);
 		data->q++;
+		return (0);
 	}
-	else
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img[RENDU].img, 0, 0);
-	return (0);
+	return (1);
 }
 
 void	print_background(t_data *data)

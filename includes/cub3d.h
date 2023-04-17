@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/17 15:27:50 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 18:18:11 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ void	wall_lenght(t_ray *ray, int screen_height);
 
 // render.c
 int		render(t_data *data);
+int		surprise_mother_fucker(t_data *data);
 void	print_background(t_data *data);
 void	init_walls(t_ray *ray, t_text *text);
 void	draw_wall(t_data *data, int x0, t_ray *ray, t_text *text);

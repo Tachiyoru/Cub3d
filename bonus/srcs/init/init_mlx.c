@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/17 16:13:57 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 18:15:40 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	mouse_set(int clic, int y, int x, t_data *data)
 
 void	loop_hook(t_data data)
 {
-	// mlx_mouse_hide(data.mlx_ptr, data.win_ptr); // leak de fou ??
 	mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &mouse_move, &data);
 	mlx_loop_hook(data.mlx_ptr, &render, &data);
 	mlx_mouse_hook(data.win_ptr, &mouse_set, &data);

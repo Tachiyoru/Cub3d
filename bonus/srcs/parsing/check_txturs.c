@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:46:41 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 16:50:23 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:16:26 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ int	check_textures_size(t_path img)
 	if (!mlx)
 		return (err_msg(MLX, NULL, 1));
 	img_ptr = NULL;
+	if (check_all_size(img, mlx, img_ptr))
+		return (2);
+	mlx_destroy_display(mlx);
+	ft_free(mlx);
+	return (0);
+}
+
+int	check_all_size(t_path img, void *mlx, void *img_ptr)
+{
 	if (sizing(mlx, img_ptr, img.path_n))
 		return (mlx_destroy_display(mlx), ft_free(mlx),
 			err_msg(img.path_n, IMG_SIZE, 1));
@@ -35,12 +44,10 @@ int	check_textures_size(t_path img)
 			err_msg(img.path_e, IMG_SIZE, 4));
 	if (sizing(mlx, img_ptr, img.path_f))
 		return (mlx_destroy_display(mlx), ft_free(mlx),
-			err_msg(img.path_f, IMG_SIZE, 4));
+			err_msg(img.path_f, IMG_SIZE, 5));
 	if (sizing(mlx, img_ptr, img.path_c))
 		return (mlx_destroy_display(mlx), ft_free(mlx),
-			err_msg(img.path_c, IMG_SIZE, 4));
-	mlx_destroy_display(mlx);
-	ft_free(mlx);
+			err_msg(img.path_c, IMG_SIZE, 6));
 	return (0);
 }
 

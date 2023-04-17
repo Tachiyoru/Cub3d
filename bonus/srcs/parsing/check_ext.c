@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:58:05 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 16:54:51 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:17:38 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,7 @@ int	check_open(t_path img)
 		return (err_msg("Floor", NOT_XPM, 1));
 	else if (check_ext(img.path_c, ".xpm"))
 		return (err_msg("Ceiling", NOT_XPM, 1));
-	fd[0] = open(img.path_n, O_RDONLY);
-	fd[1] = open(img.path_s, O_RDONLY);
-	fd[2] = open(img.path_w, O_RDONLY);
-	fd[3] = open(img.path_e, O_RDONLY);
-	fd[4] = open(img.path_f, O_RDONLY);
-	fd[5] = open(img.path_c, O_RDONLY);
+	open_all_textures(img, fd);
 	if (fd[0] == -1 || fd[1] == -1 || fd[2] == -1 || fd[3] == -1
 		|| fd[4] == -1 || fd[5] == -1)
 		return (close_txtures(fd), err_msg(OPEN_TXTUR, NULL, 1));
@@ -52,6 +47,16 @@ int	check_open(t_path img)
 	if (check_textures_size(img))
 		return (2);
 	return (0);
+}
+
+void	open_all_textures(t_path img, int fd[6])
+{
+	fd[0] = open(img.path_n, O_RDONLY);
+	fd[1] = open(img.path_s, O_RDONLY);
+	fd[2] = open(img.path_w, O_RDONLY);
+	fd[3] = open(img.path_e, O_RDONLY);
+	fd[4] = open(img.path_f, O_RDONLY);
+	fd[5] = open(img.path_c, O_RDONLY);
 }
 
 void	close_txtures(int *fd)
