@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:40:30 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 19:30:26 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:07:13 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	destroy_images(t_data *data)
 	if (data->img[RENDU].img)
 		mlx_destroy_image(data->mlx_ptr, data->img[RENDU].img);
 	data->img[RENDU].img = NULL;
+	destroy_images_2(data);
+}
+
+void	destroy_images_2(t_data *data)
+{
 	if (data->img[FLOOR].img)
 		mlx_destroy_image(data->mlx_ptr, data->img[FLOOR].img);
 	data->img[FLOOR].img = NULL;
