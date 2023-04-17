@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:37:07 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/17 18:07:58 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:25:18 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	render(t_data *data)
 		y++;
 	}
 	if (surprise_mother_fucker(data))
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
-			data->img[RENDU].img, 0, 0);
-	else
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
 			data->img[RENDU].img, 0, 0);
 	return (0);
