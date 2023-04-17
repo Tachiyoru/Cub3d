@@ -6,7 +6,7 @@
 /*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:40:57 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/15 17:31:05 by sleon            ###   ########.fr       */
+/*   Updated: 2023/04/17 15:11:54 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	init_textures(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < 7)
+	while (++i < 4)
 	{
 		data->img[i].addr = (int *)mlx_get_data_addr(data->img[i].img,
 				&data->img[i].bpp, &data->img[i].line_len,
