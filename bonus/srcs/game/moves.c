@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:12:10 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/15 16:27:22 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:02:37 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,42 @@ void	move_player(t_data *d, char c)
 	{
 		new[X] = ((new[Y] = d->ray.pos[Y] + (d->player_speed * d->ray.dir[Y]),
 					d->ray.pos[X] + (d->player_speed * d->ray.dir[X])));
-		if (d->map.map[(int)(d->ray.pos[Y] + d->ray.dir[Y] * 0.2)][(int)new[X]]
-			== '1')
+		if (wall_or_door_too_close(d, new, c))
 			return ;
 	}
 	else if (c == 'S')
+	{
 		new[X] = ((new[Y] = d->ray.pos[Y] - (d->player_speed * d->ray.dir[Y]),
 					d->ray.pos[X] - (d->player_speed * d->ray.dir[X])));
-	else if (c == 'A')
-		new[X] = ((new[Y] = d->ray.pos[Y] - (d->player_speed * d->ray.dir[X]),
-					d->ray.pos[X] + (d->player_speed * d->ray.dir[Y])));
-	else if (c == 'D')
-		new[X] = ((new[Y] = d->ray.pos[Y] + (d->player_speed * d->ray.dir[X]),
-					d->ray.pos[X] - (d->player_speed * d->ray.dir[Y])));
-	if (d->map.map[(int)new[Y]][(int)new[X]] == '1')
+		if (wall_or_door_too_close(d, new, c))
+			return ;
+	}
+	if (move_player2(d, new, c))
+		return ;
+	if (d->map.map[(int)new[Y]][(int)new[X]] == '1'
+		|| d->map.map[(int)new[Y]][(int)new[X]] == 'D')
 		return ;
 	update_pos(d, new);
 	return ;
 }
 
-void	update_pos(t_data *data, double newpos[2])
+int	move_player2(t_data *d, double new[2], char c)
 {
-	data->player[POS_X] = newpos[X];
-	data->player[POS_Y] = newpos[Y];
-	data->ray.pos[X] = newpos[X];
-	data->ray.pos[Y] = newpos[Y];
+	if (c == 'A')
+	{
+		new[X] = ((new[Y] = d->ray.pos[Y] - (d->player_speed * d->ray.dir[X]),
+					d->ray.pos[X] + (d->player_speed * d->ray.dir[Y])));
+		if (wall_or_door_too_close(d, new, c))
+			return (1);
+	}
+	else if (c == 'D')
+	{
+		new[X] = ((new[Y] = d->ray.pos[Y] + (d->player_speed * d->ray.dir[X]),
+					d->ray.pos[X] - (d->player_speed * d->ray.dir[Y])));
+		if (wall_or_door_too_close(d, new, c))
+			return (1);
+	}
+	return (0);
 }
 
 int	mouse_move(int x, int y, t_data *data)

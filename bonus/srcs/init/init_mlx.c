@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 18:43:26 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/17 18:15:40 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:45:02 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,8 @@ int	mouse_set(int clic, int y, int x, t_data *data)
 {
 	(void)y;
 	(void)x;
-	printf("clic = %d\n", clic);
 	if (clic == 1)
-	{
 		data->ray.moose_click = 1;
-		printf("CLIQUE	\n");
-	}
 	return (0);
 }
 

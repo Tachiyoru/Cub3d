@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:33:06 by msharifi          #+#    #+#             */
-/*   Updated: 2023/04/17 18:04:31 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:11:17 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	ray_dist(t_ray *ray)
 
 void	dda_algo(t_ray *ray, t_map *map)
 {
-	float	dist;
-
 	ray->hit = 0;
 	while (ray->hit == 0)
 	{
@@ -84,28 +82,7 @@ void	dda_algo(t_ray *ray, t_map *map)
 			ray->map[Y] += ray->step[Y];
 			ray->side = 1 ;
 		}
-		if (map->map[ray->map[Y]][ray->map[X]] == '1')
-			ray->hit = 1;
-		else if (map->map[ray->map[Y]][ray->map[X]] == 'P' && ray->moose_click == 1)
-		{
-			map->map[ray->map[Y]][ray->map[X]] = 'D';
-			ray->moose_click = 0;
-			ray->hit = 1;
-		}
-		else if (map->map[ray->map[Y]][ray->map[X]] == 'D')
-		{
-			dist = (ray->sidedist[X] - ray->deltadist[X]);
-			if (ray->moose_click == 1 && dist < 0.8)
-			{
-				map->map[ray->map[Y]][ray->map[X]] = 'P';
-				ray->moose_click = 0;
-			}
-			else
-			{
-				ray->hit = 1;
-				ray->door = 1;
-			}
-		}
+		ray_collision(ray, map);
 	}
 }
 

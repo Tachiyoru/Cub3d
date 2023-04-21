@@ -6,7 +6,7 @@
 /*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/17 18:18:14 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:12:28 by msharifi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,6 @@ typedef struct s_lst
 }t_lst;
 
 
-void	floor_ceiling_casting(t_data *data, int y);
-void	fc_casting_2(t_data *data, int y, float *floor, float *floorstep);
-
 /****************************************************/
 /*						FCTS						*/
 /****************************************************/
@@ -195,7 +192,18 @@ void	free_lstmap(t_lst *lst_map);
 void	free_path(t_path img);
 void	free_all(t_data *data);
 void	free_tab(char **tab, int n);
+
 ////****************** GAME *******************////
+
+// check_moves.c
+int		wall_or_door_too_close(t_data *d, double new[2], char c);
+int		wall_or_door_too_close2(t_data *d, char c);
+void	update_pos(t_data *data, double newpos[2]);
+void	ray_collision(t_ray *ray, t_map *map);
+
+// fc_casting.c
+void	floor_ceiling_casting(t_data *data, int y);
+void	fc_casting_2(t_data *data, int y, float *floor, float *floorstep);
 
 // mini_map.c
 void	convert_map_minimap(t_data *data, int y, int x);
@@ -204,7 +212,7 @@ void	print_box(t_data *data, int y, int x, int color);
 // moves.c
 void	move_cam(t_data *data, double mouv);
 void	move_player(t_data *data, char c);
-void	update_pos(t_data *data, double newpos[2]);
+int		move_player2(t_data *d, double new[2], char c);
 int 	mouse_move(int x, int y, t_data *data);
 
 // raycasting.c
