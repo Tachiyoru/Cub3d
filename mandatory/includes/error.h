@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 17:52:16 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/11 18:55:28 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:20:15 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@
 # define IMG_SIZE	" : image of wrong size"
 # define MLX		"mlx_init failed"
 # define SCREEN		"Window size too big"
-
 
 #endif

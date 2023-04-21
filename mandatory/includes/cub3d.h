@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msharifi <msharifi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sleon <sleon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 16:41:17 by sleon             #+#    #+#             */
-/*   Updated: 2023/04/17 18:18:11 by msharifi         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:21:06 by sleon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,9 +170,6 @@ typedef struct s_lst
 	struct s_lst	*next;
 }t_lst;
 
-
-void	fc_casting_2(t_data *data, int y, float *floor, float *floorstep);
-
 /****************************************************/
 /*						FCTS						*/
 /****************************************************/
@@ -204,7 +201,7 @@ void	print_box(t_data *data, int y, int x, int color);
 void	move_cam(t_data *data, double mouv);
 void	move_player(t_data *data, char c);
 void	update_pos(t_data *data, double newpos[2]);
-int 	mouse_move(int x, int y, t_data *data);
+int		mouse_move(int x, int y, t_data *data);
 
 // raycasting.c
 void	raycasting(t_data *data);
